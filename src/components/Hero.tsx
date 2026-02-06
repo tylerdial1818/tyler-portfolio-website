@@ -58,7 +58,7 @@ export default function Hero() {
           >
             <TypedText
               texts={[
-                "Data Scientist & Software Engineer",
+                "Data Scientist and AI Product Engineer",
                 "Building production-grade ML tools",
                 "Turning complexity into clarity",
               ]}
@@ -97,8 +97,9 @@ export default function Hero() {
             }}
           >
             I design and build data science applications with production-grade
-            engineering. Passionate about the intersection of rigorous analysis
-            and elegant software.
+            engineering. I'm passionate about the intersection of rigorous analysis
+            and elegant software, and I'm interested in seeing AI used for the good
+            of humanity.
           </p>
         </motion.div>
 

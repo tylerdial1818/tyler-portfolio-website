@@ -40,7 +40,7 @@ export default function Navigation() {
           className="font-display font-[800] text-[1.15rem]"
           style={{ letterSpacing: "-0.02em" }}
         >
-          <span style={{ color: "var(--accent)" }}>T</span>yler Dial
+          Tyler Dial
         </div>
 
         {/* Desktop links */}
