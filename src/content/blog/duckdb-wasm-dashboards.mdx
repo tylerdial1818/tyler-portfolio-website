@@ -1,0 +1,27 @@
+---
+title: "Building Real-Time Dashboards with DuckDB + WASM"
+date: "2024-11-20"
+tag: "Deep Dive"
+description: "How to build performant, client-side analytical dashboards using DuckDB compiled to WebAssembly."
+published: true
+---
+
+# Building Real-Time Dashboards with DuckDB + WASM
+
+DuckDB's WebAssembly build opens up fascinating possibilities for client-side analytics. Instead of sending queries to a server, you can run SQL directly in the browser against datasets loaded into memory.
+
+## Why Client-Side SQL?
+
+The traditional dashboard architecture sends every interaction to a backend. With DuckDB-WASM, you can:
+
+- **Eliminate round-trip latency** for sub-second query responses
+- **Reduce server costs** by offloading computation to the client
+- **Work offline** once the data is loaded
+
+## The Architecture
+
+The stack is straightforward: React for the UI, DuckDB-WASM for the query engine, and Apache Arrow for efficient data transfer between the two.
+
+## Performance Results
+
+For datasets under 100MB, the performance is remarkable. Aggregations over millions of rows complete in milliseconds, giving users a truly interactive analytical experience.

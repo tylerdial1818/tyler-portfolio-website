@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+:root {
+  --accent: #64b5f6;
+  --accent-dim: rgba(100, 181, 246, 0.15);
+  --accent-border: rgba(100, 181, 246, 0.3);
+  --accent-glow: rgba(100, 181, 246, 0.08);
+  --dark: #060608;
+  --dark-card: #0e0e12;
+  --light: #f4f2ed;
+  --light-card: #eae7e0;
+  --dark-text: #e5e1da;
+  --light-text: #141416;
+  --muted-dark: rgba(255, 255, 255, 0.38);
+  --muted-light: rgba(0, 0, 0, 0.42);
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-border: var(--accent-border);
+  --color-accent-glow: var(--accent-glow);
+  --color-dark: var(--dark);
+  --color-dark-card: var(--dark-card);
+  --color-light: var(--light);
+  --color-light-card: var(--light-card);
+  --color-dark-text: var(--dark-text);
+  --color-light-text: var(--light-text);
+  --color-muted-dark: var(--muted-dark);
+  --color-muted-light: var(--muted-light);
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+/* ─── Base Resets ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── Animations ─── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(3%, -15%); }
+  50% { transform: translate(-10%, 5%); }
+  70% { transform: translate(8%, 10%); }
+  90% { transform: translate(-3%, 8%); }
+}
+
+/* ─── Film Grain Overlay ─── */
+.grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 10000;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* ─── Nav Link Hover Underline ─── */
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ─── Project Card ─── */
+.project-card {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-card:hover .card-accent-line {
+  transform: scaleX(1) !important;
+}
+
+/* ─── Bento Cell ─── */
+.bento-cell {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-cell:hover {
+  transform: translateY(-3px);
+  background: var(--dark-card) !important;
+  border-color: var(--accent-border) !important;
+}
+
+/* ─── Blog Row ─── */
+.blog-row {
+  transition: all 0.35s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.blog-row:hover {
+  background: var(--accent-dim);
+}
+
+.blog-row:hover .blog-title {
+  color: #2d8ac7;
+}
+
+.blog-row:hover .blog-arrow {
+  transform: translate(4px, -4px);
+  opacity: 1;
+}
+
+.blog-title {
+  transition: color 0.3s;
+}
+
+.blog-arrow {
+  transition: all 0.3s;
+  opacity: 0.2;
+}
+
+/* ─── Tags ─── */
+.tag-dark {
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.35);
+  transition: all 0.3s;
+}
+
+.tag-dark:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.tag-light {
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.tag-light:hover {
+  border-color: var(--accent-border);
+  color: #2d8ac7;
+  background: var(--accent-dim);
+}
+
+/* ─── Book Row ─── */
+.book-row {
+  transition: all 0.35s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.book-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.book-row:hover .book-title-text {
+  color: var(--accent);
+}
+
+.book-title-text {
+  transition: color 0.3s;
+}
+
+/* ─── CTA Button ─── */
+.cta-btn {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  letter-spacing: 0.16em;
+}
+
+/* ─── Desktop Custom Cursor ─── */
+@media (min-width: 1024px) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* ─── Mobile hamburger menu ─── */
+.mobile-nav {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}

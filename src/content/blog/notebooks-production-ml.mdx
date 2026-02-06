@@ -1,0 +1,30 @@
+---
+title: "Why I Stopped Using Notebooks for Production ML"
+date: "2025-01-15"
+tag: "Engineering"
+description: "A look at why Jupyter notebooks fall short for production machine learning and what I use instead."
+published: true
+---
+
+# Why I Stopped Using Notebooks for Production ML
+
+Jupyter notebooks are fantastic for exploration and prototyping. But when it comes to production machine learning, they introduce a host of problems that make them more trouble than they're worth.
+
+## The Hidden State Problem
+
+Notebooks maintain hidden state. You can run cells out of order, delete cells that defined variables, and end up with a notebook that works on your machine but fails everywhere else.
+
+## Testing is an Afterthought
+
+Try writing unit tests for notebook code. It's possible, but it's painful. The notebook format wasn't designed for testability, and it shows.
+
+## What I Use Instead
+
+I've moved to a workflow that combines:
+
+- **Python modules** for all core logic
+- **Pytest** for testing
+- **Hydra** for configuration management
+- **DVC** for data versioning
+
+The result is ML code that's reproducible, testable, and deployable.

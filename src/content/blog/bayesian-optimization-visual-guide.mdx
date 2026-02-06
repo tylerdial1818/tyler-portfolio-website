@@ -1,0 +1,27 @@
+---
+title: "A Visual Guide to Bayesian Optimization"
+date: "2024-12-10"
+tag: "Tutorial"
+description: "An intuitive, visual walkthrough of how Bayesian optimization works and when to use it."
+published: true
+---
+
+# A Visual Guide to Bayesian Optimization
+
+Bayesian optimization is one of the most elegant approaches to hyperparameter tuning. Instead of blindly searching a parameter space, it builds a probabilistic model of the objective function and uses it to make intelligent decisions about where to search next.
+
+## The Core Idea
+
+At its heart, Bayesian optimization maintains a **surrogate model** (typically a Gaussian Process) that approximates the true objective function. It then uses an **acquisition function** to decide which point to evaluate next.
+
+## When to Use It
+
+Bayesian optimization shines when:
+
+- Your objective function is **expensive to evaluate**
+- You have a **low-dimensional** parameter space
+- You need a **global optimum**, not just a good-enough solution
+
+## Key Takeaways
+
+The beauty of Bayesian optimization is that it balances **exploration** (trying new regions) with **exploitation** (refining known good regions) in a principled way.
