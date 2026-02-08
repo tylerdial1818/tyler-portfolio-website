@@ -1,61 +1,39 @@
 "use client";
 
-import FadeIn from "./FadeIn";
+import Reveal from "./FadeIn";
+
+const SOCIAL_LINKS = [
+  { name: "GitHub", url: "https://github.com/tylerdial1818" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/tyler-dial18/" },
+  { name: "Instagram", url: "https://www.instagram.com/tyler_dial97/" },
+];
 
 export default function CTA() {
-  return (
-    <section
-      className="relative text-center"
-      style={{
-        padding: "8rem clamp(1.5rem, 5vw, 4rem) 6rem",
-        background: "var(--dark)",
-        color: "var(--dark-text)",
-      }}
-    >
-      {/* Background glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
-        style={{
-          width: 500,
-          height: 500,
-          background:
-            "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
+  const px = "clamp(2rem, 7vw, 7rem)";
 
-      <FadeIn>
-        <h2
-          className="font-display font-bold mb-5"
-          style={{
-            fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)",
-            letterSpacing: "-0.025em",
-          }}
-        >
-          Let&apos;s <span style={{ color: "var(--accent)" }}>connect</span>
-        </h2>
-        <p
-          className="text-base mb-10"
-          style={{ color: "var(--muted-dark)", lineHeight: 1.7 }}
-        >
-          Open to collaborations, interesting problems, and good conversation.
-        </p>
-        <a
-          href="https://www.linkedin.com/in/tyler-dial18/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cta-btn inline-block uppercase"
-          style={{
-            padding: "1rem 3rem",
-            border: "1px solid var(--accent-border)",
-            fontSize: "0.72rem",
-            letterSpacing: "0.18em",
-            color: "var(--accent)",
-          }}
-        >
-          Connect on LinkedIn
-        </a>
-      </FadeIn>
+  return (
+    <section style={{ padding: `10rem ${px} 8rem`, background: "var(--ink)", color: "#fff" }}>
+      <Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
+          <div>
+            <div className="uppercase mb-5" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)" }}>Contact</div>
+            <h2 className="font-display font-[800] mb-8" style={{ fontSize: "clamp(3rem, 7vw, 6rem)", letterSpacing: "-0.04em", lineHeight: 0.96 }}>
+              Let&apos;s<br />connect<span style={{ color: "var(--accent)" }}>.</span>
+            </h2>
+            <p className="max-w-[380px] mb-12" style={{ color: "var(--muted-dark)", fontSize: "1.05rem", lineHeight: 1.8 }}>
+              Open to collaborations, interesting problems, and good conversation.
+            </p>
+            <a href="https://www.linkedin.com/in/tyler-dial18/" target="_blank" rel="noopener noreferrer" className="cta-btn inline-block uppercase" style={{ padding: "1rem 2.8rem", border: "1px solid rgba(255,255,255,0.15)", fontSize: "0.72rem", letterSpacing: "0.16em", color: "#fff", borderRadius: 2 }}>
+              Connect on LinkedIn
+            </a>
+          </div>
+          <div className="flex gap-8 justify-start md:justify-end">
+            {SOCIAL_LINKS.map((s) => (
+              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="nav-a text-[0.82rem]" style={{ color: "var(--muted-dark)", letterSpacing: "0.02em", cursor: "pointer" }}>{s.name}</a>
+            ))}
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

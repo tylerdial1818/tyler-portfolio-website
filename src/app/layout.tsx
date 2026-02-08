@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { Albert_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const albertSans = Albert_Sans({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakarta.variable} ${dmSans.variable}`}>
+      <body className={`${albertSans.variable} ${dmSans.variable}`}>
         {children}
       </body>
     </html>

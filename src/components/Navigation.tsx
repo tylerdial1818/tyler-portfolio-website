@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 
-const NAV_LINKS = ["Projects", "About", "Books", "Blog", "Resume"];
+const NAV_LINKS = ["Projects", "About", "Books", "Blog"];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 60);
+    const handler = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -25,42 +25,44 @@ export default function Navigation() {
       <nav
         className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center transition-all duration-500"
         style={{
-          padding: "1.4rem clamp(1.5rem, 5vw, 4rem)",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-          background: scrolled ? "rgba(6,6,8,0.88)" : "transparent",
+          padding: "1.3rem clamp(2rem, 7vw, 7rem)",
+          background: scrolled ? "rgba(255,255,255,0.9)" : "transparent",
+          backdropFilter: scrolled ? "blur(24px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
           borderBottom: scrolled
-            ? "1px solid rgba(255,255,255,0.04)"
+            ? "1px solid var(--rule)"
             : "1px solid transparent",
-          color: "var(--dark-text)",
         }}
       >
-        {/* Logo */}
         <div
-          className="font-display font-[800] text-[1.15rem]"
+          className="font-display font-bold text-[1.05rem]"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Tyler Dial
+          Tyler<span style={{ color: "var(--accent)" }}>.</span>
         </div>
 
-        {/* Desktop links */}
         <div
-          className="hidden md:flex gap-9 text-[0.73rem] uppercase font-normal"
-          style={{ letterSpacing: "0.12em" }}
+          className="hidden md:flex gap-9 text-[0.78rem] font-normal"
+          style={{ color: "var(--accent)" }}
         >
           {NAV_LINKS.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="nav-link bg-transparent border-none"
-              style={{ color: "inherit", font: "inherit" }}
+              className="nav-a bg-transparent border-none"
+              style={{ color: "inherit", font: "inherit", cursor: "pointer" }}
             >
               {l}
             </button>
           ))}
+          <button
+            className="nav-a bg-transparent border-none"
+            style={{ color: "var(--ink)", cursor: "pointer", font: "inherit", fontWeight: 500 }}
+          >
+            Resume
+          </button>
         </div>
 
-        {/* Hamburger */}
         <button
           className="md:hidden flex flex-col gap-1.5 bg-transparent border-none p-1"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -69,49 +71,44 @@ export default function Navigation() {
           <span
             className="block w-5 h-[1.5px] transition-all duration-300"
             style={{
-              background: "var(--dark-text)",
-              transform: menuOpen
-                ? "rotate(45deg) translate(3px, 3px)"
-                : "none",
+              background: "var(--ink)",
+              transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none",
             }}
           />
           <span
             className="block w-5 h-[1.5px] transition-all duration-300"
-            style={{
-              background: "var(--dark-text)",
-              opacity: menuOpen ? 0 : 1,
-            }}
+            style={{ background: "var(--ink)", opacity: menuOpen ? 0 : 1 }}
           />
           <span
             className="block w-5 h-[1.5px] transition-all duration-300"
             style={{
-              background: "var(--dark-text)",
-              transform: menuOpen
-                ? "rotate(-45deg) translate(3px, -3px)"
-                : "none",
+              background: "var(--ink)",
+              transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none",
             }}
           />
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <div
         className={`mobile-nav ${menuOpen ? "open" : ""} fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 md:hidden`}
-        style={{
-          background: "var(--dark)",
-          color: "var(--dark-text)",
-        }}
+        style={{ background: "var(--white)", color: "var(--ink)" }}
       >
         {NAV_LINKS.map((l) => (
           <button
             key={l}
             onClick={() => scrollTo(l)}
             className="font-display text-2xl font-bold bg-transparent border-none"
-            style={{ color: "var(--dark-text)" }}
+            style={{ color: "var(--ink)" }}
           >
             {l}
           </button>
         ))}
+        <button
+          className="font-display text-2xl font-medium bg-transparent border-none"
+          style={{ color: "var(--ink)" }}
+        >
+          Resume
+        </button>
       </div>
     </>
   );

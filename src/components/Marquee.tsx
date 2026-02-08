@@ -2,45 +2,33 @@
 
 interface MarqueeProps {
   items: string[];
-  dark?: boolean;
   speed?: number;
 }
 
-export default function Marquee({
-  items,
-  dark = true,
-  speed = 28,
-}: MarqueeProps) {
-  const color = dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.12)";
-  const border = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
-
-  const repeated = Array(3).fill(items).flat();
+export default function Marquee({ items, speed = 35 }: MarqueeProps) {
+  const repeated = Array(4).fill(items).flat();
 
   return (
     <div
-      className="overflow-hidden whitespace-nowrap py-4"
+      className="overflow-hidden"
       style={{
-        borderTop: `1px solid ${border}`,
-        borderBottom: `1px solid ${border}`,
+        borderTop: "1px solid var(--rule)",
+        borderBottom: "1px solid var(--rule)",
+        padding: "0.9rem 0",
       }}
     >
       <div
-        className="inline-block font-body text-[0.82rem] font-normal uppercase"
+        className="inline-block whitespace-nowrap font-display font-medium uppercase"
         style={{
           animation: `marquee ${speed}s linear infinite`,
-          letterSpacing: "0.06em",
-          color,
+          fontSize: "0.68rem",
+          letterSpacing: "0.12em",
+          color: "rgba(10,10,10,0.1)",
         }}
       >
         {repeated.map((t, i) => (
-          <span key={i}>
+          <span key={i} className="mr-14">
             {t}
-            <span
-              className="mx-8 text-[0.6rem]"
-              style={{ color: "var(--accent)", opacity: 0.4 }}
-            >
-              &#9670;
-            </span>
           </span>
         ))}
       </div>

@@ -1,91 +1,49 @@
 "use client";
 
-import FadeIn from "./FadeIn";
-import { bentoItems } from "@/data/skills";
+import Reveal from "./FadeIn";
+import { skills } from "@/data/skills";
 
 export default function About() {
-  return (
-    <section
-      id="about"
-      style={{
-        padding: "7rem clamp(1.5rem, 5vw, 4rem)",
-        background: "var(--light)",
-        color: "var(--light-text)",
-      }}
-    >
-      <FadeIn>
-        <h2
-          className="font-display font-bold mb-6"
-          style={{
-            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-            letterSpacing: "-0.025em",
-          }}
-        >
-          About <span style={{ color: "var(--accent)" }}>Me</span>
-        </h2>
-        <p
-          className="text-[1.02rem] max-w-[620px] mb-12"
-          style={{
-            lineHeight: 1.8,
-            color: "var(--muted-light)",
-          }}
-        >
-          I&apos;m a data scientist and software engineer who believes the best
-          analytical tools are the ones people actually want to use. I combine
-          rigorous statistical thinking with production-grade engineering to build
-          applications that turn complex data into clear, actionable insight.
-        </p>
-      </FadeIn>
+  const px = "clamp(2rem, 7vw, 7rem)";
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {bentoItems.map((item, i) => (
-          <FadeIn
-            key={item.label}
-            delay={i * 0.06}
-            className={item.span === 2 ? "col-span-2" : "col-span-1"}
-          >
-            <div
-              className="bento-cell h-full"
-              style={{
-                background: item.highlight
-                  ? "var(--accent-dim)"
-                  : "var(--light-card)",
-                borderRadius: 12,
-                padding: "1.5rem",
-                border: `1px solid ${
-                  item.highlight
-                    ? "var(--accent-border)"
-                    : "rgba(0,0,0,0.05)"
-                }`,
-              }}
-            >
-              <div
-                className="text-[0.62rem] uppercase font-semibold mb-2.5"
-                style={{
-                  letterSpacing: "0.14em",
-                  color: item.highlight
-                    ? "var(--accent)"
-                    : "var(--muted-light)",
-                }}
-              >
-                {item.label}
-              </div>
-              <div
-                style={{
-                  fontSize: item.highlight ? "1rem" : "0.88rem",
-                  color: item.highlight
-                    ? "var(--light-text)"
-                    : "var(--muted-light)",
-                  lineHeight: 1.6,
-                  fontWeight: item.highlight ? 400 : 300,
-                }}
-              >
-                {item.value}
-              </div>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
+  return (
+    <section id="about" style={{ padding: `6rem ${px} 8rem`, borderTop: "1px solid var(--rule)" }}>
+      <Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-24">
+          <div>
+            <div className="uppercase mb-5" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)" }}>About</div>
+            <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1 }}>
+              About<br /><span style={{ color: "var(--accent)" }}>Me</span>
+            </h2>
+          </div>
+          <div className="flex items-end">
+            <p className="font-light" style={{ fontSize: "1.15rem", lineHeight: 1.9, color: "var(--muted)" }}>
+              I&apos;m a data scientist and software engineer who believes the best analytical tools are the ones people actually want to use. I combine rigorous statistical thinking with production-grade engineering to build applications that turn complex data into clear, actionable insight.
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="uppercase mb-6" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "var(--accent)" }}>Toolkit</div>
+      </Reveal>
+
+      {skills.map((s, i) => (
+        <Reveal key={s.label} delay={i * 0.04}>
+          <div className="skill-row grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1.5rem 0.8rem", gridTemplateColumns: "200px 1fr" }}>
+            <span className="font-display font-semibold text-[0.85rem]" style={{ letterSpacing: "-0.01em" }}>{s.label}</span>
+            <span className="text-[0.92rem] font-light" style={{ color: "var(--muted)" }}>{s.value}</span>
+          </div>
+        </Reveal>
+      ))}
+      <div className="h-px" style={{ background: "var(--rule)" }} />
+
+      <Reveal delay={0.2}>
+        <div className="mt-10 inline-flex items-center gap-5" style={{ padding: "1.1rem 1.5rem", background: "var(--accent-soft)", borderRadius: 4, borderLeft: "3px solid var(--accent)" }}>
+          <span className="uppercase font-semibold" style={{ fontSize: "0.6rem", letterSpacing: "0.15em", color: "var(--accent)" }}>Currently</span>
+          <span className="text-[0.92rem]">ML systems design &amp; interactive visualization</span>
+        </div>
+      </Reveal>
     </section>
   );
 }
