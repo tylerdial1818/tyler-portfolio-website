@@ -2,7 +2,13 @@
 
 import { useState, useEffect } from "react";
 
-const NAV_LINKS = ["Projects", "About", "Books", "Blog"];
+const NAV_LINKS = [
+  { label: "Projects", target: "projects" },
+  { label: "About Me", target: "about" },
+  { label: "Writing", target: "blog" },
+  { label: "Books", target: "books" },
+  { label: "Connect", target: "connect" },
+];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +44,7 @@ export default function Navigation() {
           className="font-display font-bold text-[1.05rem]"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Tyler<span style={{ color: "var(--accent)" }}>.</span>
+          Tyler Dial<span style={{ color: "var(--accent)" }}>.</span>
         </div>
 
         <div
@@ -47,12 +53,12 @@ export default function Navigation() {
         >
           {NAV_LINKS.map((l) => (
             <button
-              key={l}
-              onClick={() => scrollTo(l)}
+              key={l.label}
+              onClick={() => scrollTo(l.target)}
               className="nav-a bg-transparent border-none"
               style={{ color: "inherit", font: "inherit", cursor: "pointer" }}
             >
-              {l}
+              {l.label}
             </button>
           ))}
           <button
@@ -95,12 +101,12 @@ export default function Navigation() {
       >
         {NAV_LINKS.map((l) => (
           <button
-            key={l}
-            onClick={() => scrollTo(l)}
+            key={l.label}
+            onClick={() => scrollTo(l.target)}
             className="font-display text-2xl font-bold bg-transparent border-none"
             style={{ color: "var(--ink)" }}
           >
-            {l}
+            {l.label}
           </button>
         ))}
         <button

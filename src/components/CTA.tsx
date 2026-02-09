@@ -12,7 +12,7 @@ export default function CTA() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section style={{ padding: `10rem ${px} 8rem`, background: "var(--ink)", color: "#fff" }}>
+    <section id="connect" style={{ padding: `10rem ${px} 8rem`, background: "var(--ink)", color: "#fff" }}>
       <Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
           <div>

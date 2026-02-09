@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import TypedText from "./TypedText";
 
 export default function Hero() {
   const px = "clamp(2rem, 7vw, 7rem)";
@@ -18,36 +19,30 @@ export default function Hero() {
         <div className="max-w-[1600px] mx-auto w-full">
           {/* Tagline */}
           <div
-            className="font-normal mb-8 animate-fade-in"
+            className="font-normal animate-fade-in"
             style={{
-              fontSize: "0.75rem",
+              fontSize: "1.5rem",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: "var(--accent)",
+              marginBottom: "2.5rem",
             }}
           >
-            Data Scientist & AI Product Engineer
+            <TypedText texts={["AI ENGINEER & PRODUCT DEVELOPER", "SOCIAL IMPACT DATA SCIENTIST", "I BUILD AI FOR HUMANS"]} />
           </div>
 
           {/* Large Hero Text */}
           <h1
-            className="font-display font-[900] mb-16 animate-fade-in-up delay-100"
+            className="font-display font-[900] animate-fade-in-up delay-100"
             style={{
               fontSize: "clamp(3.5rem, 10vw, 9rem)",
               lineHeight: 0.95,
               letterSpacing: "-0.05em",
               maxWidth: "1400px",
+              marginBottom: "3.5rem",
             }}
           >
-            Building intelligent systems that transform
-            <br />
-            <span style={{ 
-              color: "var(--accent)",
-              display: "inline-block",
-              transform: "translateX(-0.05em)"
-            }}>
-              data into action
-            </span>
+            AI for Humanity
           </h1>
 
           {/* Description Grid */}
@@ -80,8 +75,9 @@ export default function Hero() {
                   color: "var(--muted)",
                 }}
               >
-                From strategy to deployment, I help organizations leverage 
-                AI and data science to drive measurable business outcomes.
+                I also work as a social impact data scientist working with
+                nonprofit and humanitarian organizations to make the world
+                safer, healthier, and more equitable.
               </p>
             </div>
           </div>
