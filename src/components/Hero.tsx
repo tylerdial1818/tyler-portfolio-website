@@ -6,79 +6,145 @@ export default function Hero() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen grid items-end"
-      style={{
-        gridTemplateColumns: "1fr 380px",
-        gap: "4rem",
-        padding: `10rem ${px} 5rem`,
-      }}
-    >
-      {/* Left — text */}
-      <div style={{ animation: "heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}>
-        <div
-          className="font-normal mb-10"
-          style={{
-            fontSize: "0.72rem",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--accent)",
-          }}
-        >
-          Data Scientist and AI Product Engineer
+    <>
+      {/* Main Hero Section */}
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center"
+        style={{
+          padding: `12rem ${px} 8rem`,
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto w-full">
+          {/* Tagline */}
+          <div
+            className="font-normal mb-8 animate-fade-in"
+            style={{
+              fontSize: "0.75rem",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+            }}
+          >
+            Data Scientist & AI Product Engineer
+          </div>
+
+          {/* Large Hero Text */}
+          <h1
+            className="font-display font-[900] mb-16 animate-fade-in-up delay-100"
+            style={{
+              fontSize: "clamp(3.5rem, 10vw, 9rem)",
+              lineHeight: 0.95,
+              letterSpacing: "-0.05em",
+              maxWidth: "1400px",
+            }}
+          >
+            Building intelligent systems that transform
+            <br />
+            <span style={{ 
+              color: "var(--accent)",
+              display: "inline-block",
+              transform: "translateX(-0.05em)"
+            }}>
+              data into action
+            </span>
+          </h1>
+
+          {/* Description Grid */}
+          <div 
+            className="grid gap-16 animate-fade-in delay-300"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              maxWidth: "1200px",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  fontSize: "1.25rem",
+                  lineHeight: 1.7,
+                  color: "var(--muted)",
+                }}
+              >
+                I combine deep technical expertise in data science with 
+                production-grade software engineering to build AI-powered 
+                products that solve real-world problems.
+              </p>
+            </div>
+            
+            <div>
+              <p
+                style={{
+                  fontSize: "1.25rem",
+                  lineHeight: 1.7,
+                  color: "var(--muted)",
+                }}
+              >
+                From strategy to deployment, I help organizations leverage 
+                AI and data science to drive measurable business outcomes.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <h1
-          className="font-display font-[800] mb-12"
+        {/* Scroll Indicator */}
+        <div 
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-fade-in delay-600"
           style={{
-            fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
-            lineHeight: 0.96,
-            letterSpacing: "-0.04em",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
+            opacity: 0.4,
           }}
         >
-          Building tools
-          <br />
-          that make data
-          <br />
-          <span style={{ color: "var(--accent)" }}>actionable</span>
-        </h1>
-
-        <p
-          className="max-w-[440px]"
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: 1.85,
-            color: "var(--muted)",
-            animation: "heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s both",
-          }}
-        >
-          I design and build data science applications with production-grade
-          engineering. Passionate about the intersection of rigorous analysis
-          and elegant software.
-        </p>
-      </div>
-
-      {/* Right — portrait */}
-      <div style={{ animation: "heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.4s both" }}>
-        <div
-          className="w-full overflow-hidden"
-          style={{
-            aspectRatio: "3/4",
-            borderRadius: 6,
-            boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
-          }}
-        >
-          <Image
-            src="/images/portrait.jpg"
-            alt="Tyler Dial"
-            width={380}
-            height={507}
-            className="w-full h-full object-cover object-[center_top] block"
-            priority
+          <div 
+            style={{
+              width: "1px",
+              height: "60px",
+              background: "var(--ink)",
+              animation: "scrollPulse 2s ease-in-out infinite",
+            }}
           />
+          <span style={{ 
+            fontSize: "0.65rem", 
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+          }}>
+            Scroll
+          </span>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Featured Image Section */}
+      <section
+        style={{
+          padding: `4rem ${px} 8rem`,
+          background: "var(--white)",
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto">
+          <div
+            className="w-full overflow-hidden animate-scale-in delay-400"
+            style={{
+              aspectRatio: "16/9",
+              borderRadius: 12,
+              boxShadow: "0 30px 80px rgba(0,0,0,0.12)",
+            }}
+          >
+            <Image
+              src="/images/portrait.jpg"
+              alt="Tyler Dial"
+              width={1600}
+              height={900}
+              className="w-full h-full object-cover block"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
+
+// Add scroll pulse animation to CSS if not exists
