@@ -39,7 +39,7 @@ export default function About() {
       <div className="h-px" style={{ background: "var(--rule)" }} />
 
       <Reveal delay={0.2}>
-        <div style={{ marginTop: "3rem" }} className="inline-flex items-center gap-5" style={{ padding: "1.1rem 1.5rem", background: "var(--accent-soft)", borderRadius: 4, borderLeft: "3px solid var(--accent)" }}>
+        <div className="inline-flex items-center gap-5" style={{ marginTop: "3rem", padding: "1.1rem 1.5rem", background: "var(--accent-soft)", borderRadius: 4, borderLeft: "3px solid var(--accent)" }}>
           <span className="uppercase font-semibold" style={{ fontSize: "0.6rem", letterSpacing: "0.15em", color: "var(--accent)" }}>Currently</span>
           <span className="text-[0.92rem]">ML systems design &amp; interactive visualization</span>
         </div>
