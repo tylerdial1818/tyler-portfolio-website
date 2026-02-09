@@ -2,95 +2,184 @@
 
 import Reveal from "./FadeIn";
 import { projects } from "@/data/projects";
+import Image from "next/image";
 
 export default function Projects() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="projects" style={{ padding: `8rem ${px}` }}>
-      <Reveal>
-        <div className="flex justify-between items-end mb-16">
-          <div>
+    <section 
+      id="projects" 
+      style={{ 
+        padding: `10rem ${px} 8rem`,
+        background: "var(--bg-light)",
+      }}
+    >
+      {/* Section Header */}
+      <div className="max-w-[1600px] mx-auto mb-20">
+        <Reveal>
+          <div className="mb-8">
             <div
               className="uppercase mb-5"
               style={{
-                fontSize: "0.62rem",
-                letterSpacing: "0.2em",
+                fontSize: "0.7rem",
+                letterSpacing: "0.25em",
                 color: "var(--accent)",
+                fontWeight: 500,
               }}
             >
               Selected Work
             </div>
             <h2
-              className="font-display font-[800]"
+              className="font-display font-[900]"
               style={{
-                fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
-                letterSpacing: "-0.04em",
-                lineHeight: 1,
+                fontSize: "clamp(3rem, 6vw, 6rem)",
+                letterSpacing: "-0.05em",
+                lineHeight: 0.95,
               }}
             >
-              Projects
+              Projects that
+              <br />
+              drive results
             </h2>
           </div>
-          <span
-            className="text-[0.72rem]"
-            style={{ letterSpacing: "0.1em", color: "var(--accent)" }}
-          >
-            {projects.length} Projects
-          </span>
-        </div>
-      </Reveal>
+        </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Reveal delay={0.2}>
+          <p
+            style={{
+              fontSize: "1.15rem",
+              lineHeight: 1.7,
+              color: "var(--muted)",
+              maxWidth: "640px",
+            }}
+          >
+            From AI prototypes to production-grade applications, each project 
+            showcases the intersection of rigorous data science and elegant 
+            engineering.
+          </p>
+        </Reveal>
+      </div>
+
+      {/* Projects Grid */}
+      <div 
+        className="max-w-[1600px] mx-auto grid gap-16"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
+        }}
+      >
         {projects.map((p, i) => (
-          <Reveal key={p.title} delay={i * 0.1}>
-            <div className="proj-card">
-              {/* Image area */}
+          <Reveal key={p.title} delay={i * 0.15}>
+            <article className="portfolio-item group">
+              {/* Image Container */}
               <div
-                className="w-full relative overflow-hidden mb-6"
+                className="w-full relative overflow-hidden mb-8"
                 style={{
-                  aspectRatio: "16/10",
-                  borderRadius: 8,
+                  aspectRatio: "4/3",
+                  borderRadius: 12,
                   background: p.gradient,
                 }}
               >
-                <div className="proj-img w-full h-full flex items-center justify-center">
-                  <div className="w-[65%]" style={{ opacity: 0.12 }}>
-                    <div className="mb-3" style={{ height: 8, background: "#fff", borderRadius: 4, width: "40%" }} />
-                    <div className="mb-2" style={{ height: 5, background: "#fff", borderRadius: 3, width: "80%" }} />
-                    <div className="mb-2" style={{ height: 5, background: "#fff", borderRadius: 3, width: "65%" }} />
-                    <div style={{ height: 5, background: "#fff", borderRadius: 3, width: "50%" }} />
-                    <div className="flex gap-2 mt-5">
-                      <div style={{ height: 24, width: 24, background: "#fff", borderRadius: 4 }} />
-                      <div style={{ height: 24, width: 24, background: "#fff", borderRadius: 4 }} />
-                      <div style={{ height: 24, width: 24, background: "#fff", borderRadius: 4 }} />
-                    </div>
-                  </div>
+                <div className="w-full h-full">
+                  <Image
+                    src="/images/portrait.jpg"
+                    alt={p.title}
+                    width={800}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.1 }}
+                  />
                 </div>
+                
+                {/* Overlay badge */}
                 <div
-                  className="absolute bottom-4 right-4"
+                  className="absolute top-6 left-6"
                   style={{
-                    background: "rgba(0,0,0,0.5)",
+                    background: "rgba(255,255,255,0.95)",
                     backdropFilter: "blur(10px)",
-                    padding: "0.5rem 0.8rem",
+                    padding: "0.5rem 1rem",
                     borderRadius: 6,
                   }}
                 >
-                  <div className="font-display font-bold text-white leading-none" style={{ fontSize: "1.1rem" }}>{p.metric}</div>
-                  <div className="uppercase mt-0.5" style={{ fontSize: "0.5rem", letterSpacing: "0.08em", color: "rgba(255,255,255,0.5)" }}>{p.metricLabel}</div>
+                  <div 
+                    className="font-semibold" 
+                    style={{ 
+                      fontSize: "0.7rem", 
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "var(--ink)",
+                    }}
+                  >
+                    2025
+                  </div>
+                </div>
+
+                {/* Metric badge */}
+                {p.metric && (
+                  <div
+                    className="absolute bottom-6 right-6"
+                    style={{
+                      background: "rgba(0,0,0,0.75)",
+                      backdropFilter: "blur(10px)",
+                      padding: "0.75rem 1.25rem",
+                      borderRadius: 8,
+                    }}
+                  >
+                    <div className="font-display font-bold text-white leading-none" style={{ fontSize: "1.5rem" }}>
+                      {p.metric}
+                    </div>
+                    <div className="uppercase mt-1" style={{ fontSize: "0.6rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.6)" }}>
+                      {p.metricLabel}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div>
+                <h3 
+                  className="font-display font-[900] mb-4 group-hover:text-accent transition-colors"
+                  style={{ 
+                    fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {p.title}
+                </h3>
+                
+                <p 
+                  className="mb-6" 
+                  style={{ 
+                    fontSize: "1rem", 
+                    color: "var(--muted)", 
+                    lineHeight: 1.7 
+                  }}
+                >
+                  {p.desc}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span 
+                      key={t} 
+                      style={{ 
+                        fontSize: "0.7rem", 
+                        letterSpacing: "0.08em", 
+                        padding: "0.4rem 0.9rem", 
+                        border: "1px solid var(--rule)", 
+                        borderRadius: 6, 
+                        color: "var(--accent)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className="flex items-start gap-3 mb-3">
-                <span className="font-body text-[0.68rem] mt-1" style={{ color: "var(--accent)" }}>[0{i + 1}]</span>
-                <h3 className="font-display font-[800] text-[1.35rem]" style={{ letterSpacing: "-0.02em", lineHeight: 1.2 }}>{p.title}</h3>
-              </div>
-              <p className="text-[0.85rem] mb-4 pl-8" style={{ color: "var(--muted)", lineHeight: 1.6 }}>{p.desc}</p>
-              <div className="flex gap-1.5 pl-8">
-                {p.tags.map((t) => (
-                  <span key={t} style={{ fontSize: "0.6rem", letterSpacing: "0.06em", padding: "0.25rem 0.6rem", border: "1px solid var(--rule)", borderRadius: 100, color: "var(--accent)" }}>{t}</span>
-                ))}
-              </div>
-            </div>
+            </article>
           </Reveal>
         ))}
       </div>
