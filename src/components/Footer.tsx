@@ -23,7 +23,7 @@ export default function Footer() {
     <footer
       className="flex justify-between items-center text-[0.72rem]"
       style={{
-        padding: "2rem clamp(2rem, 7vw, 7rem)",
+        padding: "3rem clamp(2rem, 7vw, 7rem)",
         color: "var(--accent)",
         background: "var(--white)",
         borderTop: "1px solid var(--rule)",

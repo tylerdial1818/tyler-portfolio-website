@@ -7,20 +7,20 @@ export default function Books() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="books" style={{ padding: `8rem ${px}`, background: "var(--ink)", color: "#fff" }}>
+    <section id="books" style={{ padding: `10rem ${px}`, background: "var(--ink)", color: "#fff" }}>
       <Reveal>
-        <div className="uppercase mb-5" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)" }}>Reading</div>
-        <h2 className="font-display font-[800] mb-4" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1 }}>Book Shelf</h2>
-        <p className="text-[0.95rem] max-w-[450px] mb-20" style={{ color: "var(--muted-dark)", lineHeight: 1.7 }}>
+        <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Reading</div>
+        <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "1.5rem" }}>Book Shelf</h2>
+        <p className="text-[0.95rem] max-w-[450px]" style={{ color: "var(--muted-dark)", lineHeight: 1.8, marginBottom: "4rem" }}>
           What I&apos;m reading and what&apos;s shaped my thinking. Mostly at the intersection of data, systems, and design.
         </p>
       </Reveal>
 
       <Reveal>
-        <div className="uppercase mb-6" style={{ fontSize: "0.56rem", letterSpacing: "0.2em", color: "var(--muted-dark)" }}>Currently Reading</div>
+        <div className="uppercase" style={{ fontSize: "0.56rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "2rem" }}>Currently Reading</div>
       </Reveal>
       <Reveal delay={0.1}>
-        <div className="flex gap-5 mb-20 overflow-x-auto">
+        <div className="flex gap-5 overflow-x-auto" style={{ marginBottom: "4rem" }}>
           {currentlyReading.map((book) => (
             <div key={book.title} className="book-spine relative flex flex-col justify-between shrink-0" style={{ background: book.color, borderRadius: "3px 7px 7px 3px", padding: "1.4rem 1.1rem", width: 185, height: 255, boxShadow: "4px 8px 24px rgba(0,0,0,0.3)" }}>
               <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: "rgba(255,255,255,0.07)", borderRadius: "3px 0 0 3px" }} />
@@ -40,7 +40,7 @@ export default function Books() {
       </Reveal>
 
       <Reveal>
-        <div className="uppercase mb-6" style={{ fontSize: "0.56rem", letterSpacing: "0.2em", color: "var(--muted-dark)" }}>Recently Read</div>
+        <div className="uppercase" style={{ fontSize: "0.56rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "2rem" }}>Recently Read</div>
       </Reveal>
       {recentlyRead.map((book, i) => (
         <Reveal key={book.title} delay={i * 0.04}>

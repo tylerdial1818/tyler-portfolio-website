@@ -11,17 +11,17 @@ export default function Projects() {
     <section 
       id="projects" 
       style={{ 
-        padding: `10rem ${px} 8rem`,
+        padding: `12rem ${px} 10rem`,
         background: "var(--bg-light)",
       }}
     >
       {/* Section Header */}
-      <div className="max-w-[1600px] mx-auto mb-20">
+      <div className="max-w-[1600px] mx-auto" style={{ marginBottom: "6rem" }}>
         <Reveal>
-          <div className="mb-8">
+          <div style={{ marginBottom: "2.5rem" }}>
             <div
-              className="uppercase mb-5"
-              style={{
+              className="uppercase"
+              style={{ marginBottom: "1.5rem",
                 fontSize: "0.7rem",
                 letterSpacing: "0.25em",
                 color: "var(--accent)",
@@ -49,9 +49,10 @@ export default function Projects() {
           <p
             style={{
               fontSize: "1.15rem",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
               color: "var(--muted)",
               maxWidth: "640px",
+              marginTop: "1.5rem",
             }}
           >
             From AI prototypes to production-grade applications, each project 
@@ -73,11 +74,12 @@ export default function Projects() {
             <article className="portfolio-item group">
               {/* Image Container */}
               <div
-                className="w-full relative overflow-hidden mb-8"
+                className="w-full relative overflow-hidden"
                 style={{
                   aspectRatio: "4/3",
                   borderRadius: 12,
                   background: p.gradient,
+                  marginBottom: "1.5rem",
                 }}
               >
                 <div className="w-full h-full">
@@ -138,22 +140,23 @@ export default function Projects() {
               {/* Content */}
               <div>
                 <h3 
-                  className="font-display font-[900] mb-4 group-hover:text-accent transition-colors"
-                  style={{ 
+                  className="font-display font-[900] group-hover:text-accent transition-colors"
+                  style={{
                     fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
                     letterSpacing: "-0.03em",
                     lineHeight: 1.1,
+                    marginBottom: "1rem",
                   }}
                 >
                   {p.title}
                 </h3>
                 
-                <p 
-                  className="mb-6" 
-                  style={{ 
-                    fontSize: "1rem", 
-                    color: "var(--muted)", 
-                    lineHeight: 1.7 
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    color: "var(--muted)",
+                    lineHeight: 1.8,
+                    marginBottom: "1.5rem",
                   }}
                 >
                   {p.desc}

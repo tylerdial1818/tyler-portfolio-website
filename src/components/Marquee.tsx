@@ -14,7 +14,7 @@ export default function Marquee({ items, speed = 35 }: MarqueeProps) {
       style={{
         borderTop: "1px solid var(--rule)",
         borderBottom: "1px solid var(--rule)",
-        padding: "0.9rem 0",
+        padding: "1.4rem 0",
       }}
     >
       <div

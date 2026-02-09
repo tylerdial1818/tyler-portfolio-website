@@ -8,16 +8,16 @@ export default function Blog() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="blog" style={{ padding: `8rem ${px}` }}>
+    <section id="blog" style={{ padding: `10rem ${px}` }}>
       <Reveal>
-        <div className="uppercase mb-5" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)" }}>Writing</div>
-        <h2 className="font-display font-[800] mb-16" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1 }}>Recent Writing</h2>
+        <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.5rem" }}>Writing</div>
+        <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "5rem" }}>Recent Writing</h2>
       </Reveal>
 
       {blogPosts.map((post, i) => (
         <Reveal key={post.title} delay={i * 0.06}>
           <Link href={`/blog/${post.slug}`}>
-            <div className="blog-item" style={{ borderTop: "1px solid var(--rule)", padding: "2rem 0" }}>
+            <div className="blog-item" style={{ borderTop: "1px solid var(--rule)", padding: "2.5rem 0" }}>
               <div className="flex items-center gap-4 mb-2.5">
                 <span className="font-body text-[0.68rem]" style={{ color: "var(--accent)" }}>[0{i + 1}]</span>
                 <span style={{ fontSize: "0.6rem", letterSpacing: "0.08em", padding: "0.22rem 0.6rem", border: "1px solid var(--rule)", borderRadius: 100, color: "var(--accent)" }}>{post.tag}</span>
