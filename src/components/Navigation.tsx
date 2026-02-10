@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { label: "Projects", target: "projects", isRoute: false },
-  { label: "About Me", target: "about", isRoute: false },
-  { label: "Writing", target: "blog", isRoute: false },
+  { label: "Projects", target: "/projects", isRoute: true },
+  { label: "About Me", target: "/about", isRoute: true },
+  { label: "Writing", target: "/blog", isRoute: true },
   { label: "Books", target: "/books", isRoute: true },
   { label: "Connect", target: "connect", isRoute: false },
 ];
