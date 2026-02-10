@@ -7,7 +7,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
-import Books from "@/components/Books";
+import BooksEnhanced from "@/components/BooksEnhanced";
 import Blog from "@/components/Blog";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -24,7 +24,7 @@ export default function Home() {
         <Marquee items={marqueeItems} />
         <Projects />
         <About />
-        <Books />
+        <BooksEnhanced />
         <Blog />
         <CTA />
         <Footer />
