@@ -18,6 +18,13 @@ export default function Navigation() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // On non-homepage pages, show nav immediately
+    if (pathname !== "/") {
+      setNavReady(true);
+      return;
+    }
+    
+    // On homepage, show nav based on scroll position
     const handler = () => {
       const vh = window.innerHeight;
       const threshold = vh * 0.6;
@@ -27,7 +34,7 @@ export default function Navigation() {
     window.addEventListener("scroll", handler, { passive: true });
     handler();
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [pathname]);
 
   const handleNavClick = (link: typeof NAV_LINKS[0]) => {
     setMenuOpen(false);
@@ -59,13 +66,19 @@ export default function Navigation() {
             : "1px solid transparent",
         }}
       >
-        {/* Logo placeholder - invisible, ScrollLogo renders it */}
-        <div
+        {/* Logo - visible on non-homepage, or when scrolled on homepage */}
+        <Link
+          href="/"
           className="font-display font-bold text-[1.05rem]"
-          style={{ letterSpacing: "-0.02em", opacity: 0 }}
+          style={{ 
+            letterSpacing: "-0.02em", 
+            opacity: pathname !== "/" ? 1 : 0,
+            textDecoration: "none",
+            color: "var(--ink)"
+          }}
         >
-          Tyler Dial<span>.</span>
-        </div>
+          Tyler Dial<span style={{ color: "var(--accent)" }}>.</span>
+        </Link>
 
         <div
           className="hidden md:flex gap-9 text-[0.78rem] font-normal transition-opacity duration-500"

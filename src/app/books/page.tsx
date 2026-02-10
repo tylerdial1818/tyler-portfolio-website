@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
-import ScrollLogo from "@/components/ScrollLogo";
 import Footer from "@/components/Footer";
 import StarRating from "@/components/StarRating";
 import {
@@ -219,7 +218,6 @@ export default function BooksPage() {
       className="font-body font-light"
       style={{ background: "var(--bg-light)", color: "var(--ink)", minHeight: "100vh" }}
     >
-      <ScrollLogo />
       <Navigation />
 
       {/* Hero Section */}
