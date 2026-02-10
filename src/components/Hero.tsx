@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import TypedText from "./TypedText";
+import Reveal from "./FadeIn";
 
 function RotatingText({ lines }: { lines: string[] }) {
   const [index, setIndex] = useState(0);
@@ -20,7 +20,7 @@ function RotatingText({ lines }: { lines: string[] }) {
   }, [lines.length]);
 
   return (
-    <div className="animate-fade-in delay-300" style={{ maxWidth: "640px" }}>
+    <div style={{ maxWidth: "640px" }}>
       <p
         style={{
           fontSize: "1.2rem",
@@ -42,81 +42,13 @@ export default function Hero() {
 
   return (
     <>
-      {/* Main Hero Section */}
+      {/* Logo Landing — full viewport spacer for scroll-shrink animation */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center"
-        style={{
-          padding: `12rem ${px} 8rem`,
-        }}
+        className="relative min-h-screen"
       >
-        <div
-          className="max-w-[1600px] mx-auto w-full grid items-center"
-          style={{
-            gridTemplateColumns: "1fr 300px",
-            gap: "3rem",
-          }}
-        >
-          {/* Left: All text content */}
-          <div>
-            {/* Tagline */}
-            <div
-              className="font-normal animate-fade-in"
-              style={{
-                fontSize: "1.5rem",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "var(--accent)",
-                marginBottom: "2.5rem",
-              }}
-            >
-              <TypedText texts={["AI ENGINEER & PRODUCT DEVELOPER", "SOCIAL IMPACT DATA SCIENTIST", "I BUILD AI FOR HUMANS"]} />
-            </div>
-
-            {/* Large Hero Text */}
-            <h1
-              className="font-display font-[900] animate-fade-in-up delay-100"
-              style={{
-                fontSize: "clamp(3.5rem, 8vw, 7rem)",
-                lineHeight: 0.95,
-                letterSpacing: "-0.05em",
-                marginBottom: "3.5rem",
-              }}
-            >
-              AI for Humanity
-            </h1>
-
-            {/* Description — rotating */}
-            <RotatingText
-              lines={[
-                "Deep technical expertise in data science and production-grade software engineering — building AI-powered products that solve real-world problems.",
-                "Social impact data scientist working with nonprofit and humanitarian organizations to make the world safer, healthier, and more equitable.",
-              ]}
-            />
-          </div>
-
-          {/* Right: Portrait */}
-          <div
-            className="hidden md:block overflow-hidden animate-fade-in delay-200"
-            style={{
-              width: "100%",
-              height: "420px",
-              borderRadius: 12,
-            }}
-          >
-            <Image
-              src="/images/portrait.jpg"
-              alt="Tyler Dial"
-              width={700}
-              height={960}
-              className="w-full h-full object-cover"
-              priority
-            />
-          </div>
-        </div>
-
         {/* Scroll Indicator */}
-        <div 
+        <div
           className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-fade-in delay-600"
           style={{
             display: "flex",
@@ -126,7 +58,7 @@ export default function Hero() {
             opacity: 0.4,
           }}
         >
-          <div 
+          <div
             style={{
               width: "1px",
               height: "60px",
@@ -134,8 +66,8 @@ export default function Hero() {
               animation: "scrollPulse 2s ease-in-out infinite",
             }}
           />
-          <span style={{ 
-            fontSize: "0.65rem", 
+          <span style={{
+            fontSize: "0.65rem",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
           }}>
@@ -144,8 +76,67 @@ export default function Hero() {
         </div>
       </section>
 
+      {/* Hero Content */}
+      <section
+        style={{
+          padding: `6rem ${px} 4rem`,
+        }}
+      >
+        <div
+          className="max-w-[1600px] mx-auto w-full grid items-start"
+          style={{
+            gridTemplateColumns: "1fr 390px",
+            gap: "3rem",
+          }}
+        >
+          {/* Left: All text content */}
+          <div>
+            {/* Tagline */}
+            <Reveal>
+              <div
+                className="font-normal"
+                style={{
+                  fontSize: "1.5rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "var(--accent)",
+                  marginBottom: "2.5rem",
+                }}
+              >
+                <TypedText texts={["AI ENGINEER & PRODUCT DEVELOPER", "SOCIAL IMPACT DATA SCIENTIST", "I BUILD AI FOR HUMANS"]} />
+              </div>
+            </Reveal>
+
+            {/* Large Hero Text */}
+            <Reveal delay={0.1}>
+              <h1
+                className="font-display font-[900]"
+                style={{
+                  fontSize: "clamp(3rem, 6vw, 5.5rem)",
+                  lineHeight: 0.95,
+                  letterSpacing: "-0.05em",
+                  marginBottom: "3.5rem",
+                }}
+              >
+                AI for Humanity
+              </h1>
+            </Reveal>
+
+            {/* Description — rotating */}
+            <Reveal delay={0.2}>
+              <RotatingText
+                lines={[
+                  "Deep technical expertise in data science and production-grade software engineering — building AI-powered products that solve real-world problems.",
+                  "Social impact data scientist working with nonprofit and humanitarian organizations to make the world safer, healthier, and more equitable.",
+                ]}
+              />
+            </Reveal>
+          </div>
+
+          {/* Right: Spacer for fixed ScrollPortrait */}
+          <div className="hidden md:block" style={{ height: "546px" }} />
+        </div>
+      </section>
     </>
   );
 }
-
-// Add scroll pulse animation to CSS if not exists

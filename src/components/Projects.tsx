@@ -8,11 +8,12 @@ export default function Projects() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section 
-      id="projects" 
-      style={{ 
+    <section
+      id="projects"
+      style={{
         padding: `12rem ${px} 10rem`,
-        background: "var(--bg-light)",
+        background: "var(--ink)",
+        color: "#fff",
       }}
     >
       {/* Section Header */}
@@ -36,6 +37,7 @@ export default function Projects() {
                 fontSize: "clamp(3rem, 6vw, 6rem)",
                 letterSpacing: "-0.05em",
                 lineHeight: 0.95,
+                color: "#fff",
               }}
             >
               Projects that
@@ -50,20 +52,20 @@ export default function Projects() {
             style={{
               fontSize: "1.15rem",
               lineHeight: 1.8,
-              color: "var(--muted)",
+              color: "rgba(255,255,255,0.7)",
               maxWidth: "640px",
               marginTop: "1.5rem",
             }}
           >
-            From AI prototypes to production-grade applications, each project 
-            showcases the intersection of rigorous data science and elegant 
+            From AI prototypes to production-grade applications, each project
+            showcases the intersection of rigorous data science and elegant
             engineering.
           </p>
         </Reveal>
       </div>
 
       {/* Projects Grid */}
-      <div 
+      <div
         className="max-w-[1600px] mx-auto grid gap-16"
         style={{
           gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
@@ -92,7 +94,7 @@ export default function Projects() {
                     style={{ opacity: 0.1 }}
                   />
                 </div>
-                
+
                 {/* Overlay badge */}
                 <div
                   className="absolute top-6 left-6"
@@ -103,10 +105,10 @@ export default function Projects() {
                     borderRadius: 6,
                   }}
                 >
-                  <div 
-                    className="font-semibold" 
-                    style={{ 
-                      fontSize: "0.7rem", 
+                  <div
+                    className="font-semibold"
+                    style={{
+                      fontSize: "0.7rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: "var(--ink)",
@@ -130,7 +132,7 @@ export default function Projects() {
                     <div className="font-display font-bold text-white leading-none" style={{ fontSize: "1.5rem" }}>
                       {p.metric}
                     </div>
-                    <div className="uppercase mt-1" style={{ fontSize: "0.6rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.6)" }}>
+                    <div className="uppercase mt-1" style={{ fontSize: "0.6rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)" }}>
                       {p.metricLabel}
                     </div>
                   </div>
@@ -139,22 +141,23 @@ export default function Projects() {
 
               {/* Content */}
               <div>
-                <h3 
+                <h3
                   className="font-display font-[900] group-hover:text-accent transition-colors"
                   style={{
                     fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
                     letterSpacing: "-0.03em",
                     lineHeight: 1.1,
                     marginBottom: "1rem",
+                    color: "#fff",
                   }}
                 >
                   {p.title}
                 </h3>
-                
+
                 <p
                   style={{
                     fontSize: "1rem",
-                    color: "var(--muted)",
+                    color: "rgba(255,255,255,0.7)",
                     lineHeight: 1.8,
                     marginBottom: "1.5rem",
                   }}
@@ -165,14 +168,14 @@ export default function Projects() {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {p.tags.map((t) => (
-                    <span 
-                      key={t} 
-                      style={{ 
-                        fontSize: "0.7rem", 
-                        letterSpacing: "0.08em", 
-                        padding: "0.4rem 0.9rem", 
-                        border: "1px solid var(--rule)", 
-                        borderRadius: 6, 
+                    <span
+                      key={t}
+                      style={{
+                        fontSize: "0.7rem",
+                        letterSpacing: "0.08em",
+                        padding: "0.4rem 0.9rem",
+                        border: "1px solid var(--rule-dark)",
+                        borderRadius: 6,
                         color: "var(--accent)",
                         fontWeight: 500,
                       }}
