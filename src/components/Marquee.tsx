@@ -12,8 +12,7 @@ export default function Marquee({ items, speed = 35 }: MarqueeProps) {
     <div
       className="overflow-hidden"
       style={{
-        borderTop: "1px solid var(--rule)",
-        borderBottom: "1px solid var(--rule)",
+        background: "var(--accent)",
         padding: "1.4rem 0",
       }}
     >
@@ -23,7 +22,7 @@ export default function Marquee({ items, speed = 35 }: MarqueeProps) {
           animation: `marquee ${speed}s linear infinite`,
           fontSize: "0.68rem",
           letterSpacing: "0.12em",
-          color: "rgba(10,10,10,0.1)",
+          color: "rgba(255,255,255,0.85)",
         }}
       >
         {repeated.map((t, i) => (
