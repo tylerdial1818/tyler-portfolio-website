@@ -4,11 +4,11 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  { label: "Languages", value: "Python \u00b7 SQL \u00b7 JavaScript \u00b7 R" },
-  { label: "ML / DS", value: "scikit-learn \u00b7 PyTorch \u00b7 XGBoost" },
-  { label: "Data Engineering", value: "Pandas \u00b7 DuckDB \u00b7 Spark \u00b7 dbt" },
-  { label: "Infrastructure", value: "Docker \u00b7 AWS \u00b7 FastAPI \u00b7 Airflow" },
-  { label: "Frontend", value: "React \u00b7 Next.js \u00b7 D3 \u00b7 Plotly" },
+  { label: "Languages", value: "Python \u00b7 SQL \u00b7 JavaScript \u00b7 R \u00b7 CSS \u00b7 HTML \u00b7 SAS \u00b7 STATA" },
+  { label: "ML / DS", value: "TensorFlow/Keras \u00b7 scikit-learn \u00b7 PyTorch \u00b7 XGBoost \u00b7 statsmodels" },
+  { label: "Data Engineering", value: "Kubernetes \u00b7 DuckDB \u00b7 Spark \u00b7 dbt \u00b7 Milvus \u00b7 EdgeDB \u00b7 ChromaDB" },
+  { label: "Infrastructure", value: "Docker \u00b7 AWS \u00b7 Azure \u00b7 GCP \u00b7 FastAPI \u00b7 Airflow" },
+  { label: "Frontend", value: "React \u00b7 Next.js \u00b7 Angular \u00b7 Vue \u00b7 D3 \u00b7 Plotly" },
 ];
 
 export const marqueeItems = [

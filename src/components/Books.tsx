@@ -49,10 +49,27 @@ export default function Books() {
               <span className="bk-title font-display font-medium text-[0.92rem]">{book.title}</span>
               <span className="text-[0.76rem] italic" style={{ color: "var(--muted-dark)" }}>{book.author}</span>
             </div>
-            <span className="inline-flex gap-0.5">
-              {Array.from({ length: 5 }, (_, j) => (
-                <span key={j} className="text-[0.6rem]" style={{ color: j < book.rating ? "var(--accent)" : "rgba(255,255,255,0.08)" }}>&#9733;</span>
-              ))}
+            <span className="inline-flex items-center gap-1.5">
+              <span className="text-[0.75rem] font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
+                {book.rating.toFixed(1)}/5
+              </span>
+              <span className="inline-flex gap-0.5">
+                {Array.from({ length: 5 }, (_, j) => {
+                  const fullStars = Math.floor(book.rating);
+                  const hasHalf = book.rating % 1 >= 0.3;
+                  if (j < fullStars) {
+                    return <span key={j} className="text-[0.6rem]" style={{ color: "var(--accent)" }}>&#9733;</span>;
+                  } else if (j === fullStars && hasHalf) {
+                    return (
+                      <span key={j} className="text-[0.6rem]" style={{ color: "var(--accent)", position: "relative" }}>
+                        <span style={{ position: "absolute", overflow: "hidden", width: "50%" }}>&#9733;</span>
+                        <span style={{ color: "rgba(255,255,255,0.08)" }}>&#9733;</span>
+                      </span>
+                    );
+                  }
+                  return <span key={j} className="text-[0.6rem]" style={{ color: "rgba(255,255,255,0.08)" }}>&#9733;</span>;
+                })}
+              </span>
             </span>
           </div>
         </Reveal>

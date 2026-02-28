@@ -8,11 +8,11 @@ export default function About() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="about" style={{ padding: `10rem ${px} 10rem`, borderTop: "1px solid var(--rule)" }}>
+    <section id="about" style={{ padding: `8rem ${px} 8rem`, borderTop: "1px solid var(--rule)" }}>
       <Reveal>
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
-          style={{ marginBottom: "7rem" }}
+          style={{ marginBottom: "3.5rem" }}
         >
           {/* Left: Portrait image */}
           <div
@@ -47,25 +47,18 @@ export default function About() {
       </Reveal>
 
       <Reveal>
-        <div className="uppercase" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "2rem" }}>Toolkit</div>
+        <div className="uppercase" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.2rem" }}>Toolkit</div>
       </Reveal>
 
       {skills.map((s, i) => (
         <Reveal key={s.label} delay={i * 0.04}>
-          <div className="skill-row grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1.8rem 0.8rem", gridTemplateColumns: "200px 1fr" }}>
+          <div className="skill-row grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1rem 0.8rem", gridTemplateColumns: "200px 1fr" }}>
             <span className="font-display font-semibold text-[0.85rem]" style={{ letterSpacing: "-0.01em" }}>{s.label}</span>
             <span className="text-[0.92rem] font-light" style={{ color: "var(--muted)" }}>{s.value}</span>
           </div>
         </Reveal>
       ))}
       <div className="h-px" style={{ background: "var(--rule)" }} />
-
-      <Reveal delay={0.2}>
-        <div className="inline-flex items-center gap-5" style={{ marginTop: "3rem", padding: "1.1rem 1.5rem", background: "var(--accent-soft)", borderRadius: 4, borderLeft: "3px solid var(--accent)" }}>
-          <span className="uppercase font-semibold" style={{ fontSize: "0.6rem", letterSpacing: "0.15em", color: "var(--accent)" }}>Currently</span>
-          <span className="text-[0.92rem]">ML systems design &amp; interactive visualization</span>
-        </div>
-      </Reveal>
     </section>
   );
 }

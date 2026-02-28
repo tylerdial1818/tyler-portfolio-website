@@ -71,8 +71,8 @@ export default function Projects() {
           gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
         }}
       >
-        {projects.map((p, i) => (
-          <Reveal key={p.title} delay={i * 0.15}>
+        {projects.map((p, i) => {
+          const content = (
             <article className="portfolio-item group">
               {/* Image Container */}
               <div
@@ -82,60 +82,24 @@ export default function Projects() {
                   borderRadius: 12,
                   background: p.gradient,
                   marginBottom: "1.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                <div className="w-full h-full">
+                {p.image && (
                   <Image
-                    src="/images/DSC08219.jpg"
+                    src={p.image}
                     alt={p.title}
                     width={800}
                     height={600}
-                    className="w-full h-full object-cover"
-                    style={{ opacity: 0.1 }}
+                    className="w-full h-full"
+                    style={{
+                      objectFit: p.image.includes("retain_logo") ? "contain" : "cover",
+                      opacity: p.image.includes("retain_logo") ? 0.85 : 1,
+                      padding: p.image.includes("retain_logo") ? "3rem" : 0,
+                    }}
                   />
-                </div>
-
-                {/* Overlay badge */}
-                <div
-                  className="absolute top-6 left-6"
-                  style={{
-                    background: "rgba(255,255,255,0.95)",
-                    backdropFilter: "blur(10px)",
-                    padding: "0.5rem 1rem",
-                    borderRadius: 6,
-                  }}
-                >
-                  <div
-                    className="font-semibold"
-                    style={{
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "var(--ink)",
-                    }}
-                  >
-                    2025
-                  </div>
-                </div>
-
-                {/* Metric badge */}
-                {p.metric && (
-                  <div
-                    className="absolute bottom-6 right-6"
-                    style={{
-                      background: "rgba(0,0,0,0.75)",
-                      backdropFilter: "blur(10px)",
-                      padding: "0.75rem 1.25rem",
-                      borderRadius: 8,
-                    }}
-                  >
-                    <div className="font-display font-bold text-white leading-none" style={{ fontSize: "1.5rem" }}>
-                      {p.metric}
-                    </div>
-                    <div className="uppercase mt-1" style={{ fontSize: "0.6rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.7)" }}>
-                      {p.metricLabel}
-                    </div>
-                  </div>
                 )}
               </div>
 
@@ -186,8 +150,25 @@ export default function Projects() {
                 </div>
               </div>
             </article>
-          </Reveal>
-        ))}
+          );
+
+          return (
+            <Reveal key={p.title} delay={i * 0.15}>
+              {p.link ? (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

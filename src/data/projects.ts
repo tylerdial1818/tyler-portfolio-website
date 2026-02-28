@@ -2,42 +2,40 @@ export interface Project {
   title: string;
   tags: string[];
   desc: string;
-  metric: string;
-  metricLabel: string;
   gradient: string;
+  image?: string;
+  link?: string;
 }
 
 export const projects: Project[] = [
   {
-    title: "Predictive Churn Model",
-    tags: ["Python", "XGBoost", "Streamlit"],
-    desc: "End-to-end ML pipeline predicting customer churn with 94% accuracy. Streamlit dashboard for stakeholder exploration.",
-    metric: "94%",
-    metricLabel: "accuracy",
+    title: "ML Illustrated",
+    tags: ["Full-Stack Engineering", "ML Engineering", "AI Architectures"],
+    desc: "Educational tool and passion project aimed at teaching the visual intuition behind ML and AI models.",
     gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+    image: "/images/MLIllustratedSS.png",
+    link: "https://ml-illustrated-app.vercel.app/",
   },
   {
-    title: "Real-Time Sentiment Engine",
-    tags: ["NLP", "FastAPI", "Redis"],
-    desc: "Streaming sentiment analysis API processing 10k tweets/min with sub-200ms latency. AWS auto-scaling.",
-    metric: "10k/m",
-    metricLabel: "throughput",
+    title: "Retain App with Multi-Agent Workflows",
+    tags: ["AI Agents", "Multi Agent Workflows", "ML Engineering"],
+    desc: "Lifecycle management app demo with full ML pipeline and multi-agent workflows.",
     gradient: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2333 100%)",
+    image: "/images/retain_logo.png",
   },
   {
-    title: "Portfolio Optimization Suite",
-    tags: ["Scipy", "Plotly", "React"],
-    desc: "Interactive mean-variance optimizer with Monte Carlo simulation and efficient frontier visualization.",
-    metric: "50k+",
-    metricLabel: "simulations",
+    title: "Housing Pulse",
+    tags: ["GIS", "Data Science", "Geospatial"],
+    desc: "GIS-powered tool aimed at helping people visualize affordability in the United States (renting vs. home ownership).",
     gradient: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1e293b 100%)",
+    image: "/images/HousingPulseSS1.png",
+    link: "https://us-affordability-web-app.vercel.app/",
   },
   {
-    title: "Geospatial Analytics Platform",
-    tags: ["GeoPandas", "DuckDB", "Mapbox"],
-    desc: "City-scale mobility analysis processing 50M+ GPS pings with H3 hexagonal spatial indexing.",
-    metric: "50M+",
-    metricLabel: "data points",
+    title: "Social Impact Chatbot",
+    tags: ["RAG", "LLMs", "AI Engineering"],
+    desc: "RAG-engineered chatbot to help social impact practitioners plan rigorous projects according to Theory of Change (ToC) research.",
     gradient: "linear-gradient(135deg, #0c1821 0%, #1b2838 50%, #0f2027 100%)",
+    image: "/images/SICSS.png",
   },
 ];

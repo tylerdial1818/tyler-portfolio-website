@@ -1,21 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Projects", target: "/projects", isRoute: true },
   { label: "About Me", target: "/about", isRoute: true },
-  { label: "Writing", target: "/blog", isRoute: true },
+  { label: "Writing", target: "", isRoute: false, isDropdown: true },
   { label: "Books", target: "/books", isRoute: true },
   { label: "Connect", target: "connect", isRoute: false },
+];
+
+const WRITING_LINKS = [
+  { label: "Personal Writing", url: "https://substack.com/@tylerdial1818?utm_source=user-menu", external: true },
+  { label: "Professional Writing", url: "/blog", external: false },
 ];
 
 export default function Navigation() {
   const [navReady, setNavReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [writingOpen, setWritingOpen] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // On non-homepage pages, show nav immediately
@@ -23,7 +30,7 @@ export default function Navigation() {
       setNavReady(true);
       return;
     }
-    
+
     // On homepage, show nav based on scroll position
     const handler = () => {
       const vh = window.innerHeight;
@@ -35,6 +42,17 @@ export default function Navigation() {
     handler();
     return () => window.removeEventListener("scroll", handler);
   }, [pathname]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setWritingOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleNavClick = (link: typeof NAV_LINKS[0]) => {
     setMenuOpen(false);
@@ -85,7 +103,75 @@ export default function Navigation() {
           style={{ color: "var(--accent)", opacity: navReady ? 1 : 0 }}
         >
           {NAV_LINKS.map((l) =>
-            l.isRoute ? (
+            "isDropdown" in l && l.isDropdown ? (
+              <div key={l.label} ref={dropdownRef} style={{ position: "relative" }}>
+                <button
+                  onClick={() => setWritingOpen(!writingOpen)}
+                  className="nav-a bg-transparent border-none"
+                  style={{ color: "inherit", font: "inherit", cursor: "pointer" }}
+                >
+                  {l.label}
+                </button>
+                {writingOpen && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 0.75rem)",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      background: "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(24px)",
+                      WebkitBackdropFilter: "blur(24px)",
+                      border: "1px solid var(--rule)",
+                      borderRadius: 8,
+                      padding: "0.5rem 0",
+                      minWidth: 200,
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    {WRITING_LINKS.map((w) =>
+                      w.external ? (
+                        <a
+                          key={w.label}
+                          href={w.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setWritingOpen(false)}
+                          style={{
+                            display: "block",
+                            padding: "0.6rem 1.2rem",
+                            fontSize: "0.78rem",
+                            color: "var(--ink)",
+                            textDecoration: "none",
+                            whiteSpace: "nowrap",
+                          }}
+                          className="nav-a"
+                        >
+                          {w.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={w.label}
+                          href={w.url}
+                          onClick={() => setWritingOpen(false)}
+                          style={{
+                            display: "block",
+                            padding: "0.6rem 1.2rem",
+                            fontSize: "0.78rem",
+                            color: "var(--ink)",
+                            textDecoration: "none",
+                            whiteSpace: "nowrap",
+                          }}
+                          className="nav-a"
+                        >
+                          {w.label}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : l.isRoute ? (
               <Link
                 key={l.label}
                 href={l.target}
@@ -145,7 +231,33 @@ export default function Navigation() {
         style={{ background: "var(--white)", color: "var(--ink)" }}
       >
         {NAV_LINKS.map((l) =>
-          l.isRoute ? (
+          "isDropdown" in l && l.isDropdown ? (
+            WRITING_LINKS.map((w) =>
+              w.external ? (
+                <a
+                  key={w.label}
+                  href={w.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-display text-2xl font-bold"
+                  style={{ color: "var(--ink)", textDecoration: "none" }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {w.label}
+                </a>
+              ) : (
+                <Link
+                  key={w.label}
+                  href={w.url}
+                  className="font-display text-2xl font-bold"
+                  style={{ color: "var(--ink)", textDecoration: "none" }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {w.label}
+                </Link>
+              )
+            )
+          ) : l.isRoute ? (
             <Link
               key={l.label}
               href={l.target}

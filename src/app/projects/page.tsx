@@ -56,29 +56,23 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
         </div>
-        <div style={{ textAlign: "right", minWidth: "80px" }}>
-          <div
-            style={{
-              fontSize: "2rem",
-              fontWeight: 700,
-              color: "var(--accent)",
-              lineHeight: 1,
-            }}
-          >
-            {project.metric}
-          </div>
-          <div
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               fontSize: "0.75rem",
-              color: "var(--muted)",
-              marginTop: "0.25rem",
-              textTransform: "uppercase",
+              fontWeight: 500,
+              color: "var(--accent)",
+              textDecoration: "none",
               letterSpacing: "0.05em",
+              textTransform: "uppercase",
             }}
           >
-            {project.metricLabel}
-          </div>
-        </div>
+            View Project &rarr;
+          </a>
+        )}
       </div>
       <p
         style={{
