@@ -86,7 +86,7 @@ export default function Projects() {
               >
                 <div className="w-full h-full">
                   <Image
-                    src="/images/portrait.jpg"
+                    src="/images/DSC08219.jpg"
                     alt={p.title}
                     width={800}
                     height={600}
