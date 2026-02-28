@@ -21,7 +21,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <div style={{ position: "relative", zIndex: 20 }}>
-        <Marquee items={marqueeItems} />
+        <Marquee items={marqueeItems} speed={60} />
         <Projects />
         <About />
         <Books />

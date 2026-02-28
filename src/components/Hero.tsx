@@ -103,7 +103,7 @@ export default function Hero() {
                   marginBottom: "2.5rem",
                 }}
               >
-                <TypedText texts={["AI ENGINEER & PRODUCT DEVELOPER", "SOCIAL IMPACT DATA SCIENTIST", "MULTI-AGENT WORKFLOWS & RAG ENGINEERING"]} />
+                <TypedText texts={["AGENTIC AI ENGINEER", "DATA SCIENCE + ML ENGINEERING", "MULTI-AGENT WORKFLOWS & RAG ENGINEERING"]} />
               </div>
             </Reveal>
 
@@ -126,7 +126,7 @@ export default function Hero() {
             <Reveal delay={0.2}>
               <RotatingText
                 lines={[
-                  "Deep technical expertise in data science and production-grade software engineering. I build AI-powered products that solve real-world problems with real ROI.",
+                  "Deep technical expertise in data science and agentic AI engineering. I build AI sysetms that solve real-world problems with real ROI.",
                   "Social impact data scientist working with nonprofit and humanitarian organizations to make the world safer, healthier, and more equitable.",
                 ]}
               />
