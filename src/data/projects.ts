@@ -28,7 +28,7 @@ export const projects: Project[] = [
     tags: ["GIS", "Data Science", "Geospatial"],
     desc: "GIS-powered tool aimed at helping people visualize affordability in the United States (renting vs. home ownership).",
     gradient: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1e293b 100%)",
-    image: "/images/HousingPulseSS1.png",
+    image: "/images/HousingPulseSS2.png",
     link: "https://us-affordability-web-app.vercel.app/",
   },
   {
@@ -36,6 +36,7 @@ export const projects: Project[] = [
     tags: ["RAG", "LLMs", "AI Engineering"],
     desc: "RAG-engineered chatbot to help social impact practitioners plan rigorous projects according to Theory of Change (ToC) research.",
     gradient: "linear-gradient(135deg, #0c1821 0%, #1b2838 50%, #0f2027 100%)",
-    image: "/images/SICSS.png",
+    image: "/images/SICSS1.png",
+    link: "https://social-impact-chatbot.vercel.app/",
   },
 ];
