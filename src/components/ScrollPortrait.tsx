@@ -133,7 +133,7 @@ export default function ScrollPortrait() {
       }}
     >
       <Image
-        src="/images/DSC08219.jpg"
+        src="/images/DSC08355-portrait.jpg"
         alt="Tyler Dial"
         width={800}
         height={1200}

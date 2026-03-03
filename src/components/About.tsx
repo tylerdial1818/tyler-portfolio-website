@@ -25,7 +25,7 @@ export default function About() {
             }}
           >
             <Image
-              src="/images/DSC08355-portrait.jpg"
+              src="/images/DSC08219-portrait.jpg"
               alt="Tyler Dial"
               width={800}
               height={1200}
@@ -39,8 +39,8 @@ export default function About() {
             <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "2.5rem" }}>
               About<br /><span style={{ color: "var(--accent)" }}>Me</span>
             </h2>
-            <p className="font-light" style={{ fontSize: "1.15rem", lineHeight: 1.9, color: "var(--muted)" }}>
-              I&apos;m a data scientist and software engineer who believes the best analytical tools are the ones people actually want to use. I combine rigorous statistical thinking with production-grade engineering to build applications that turn complex data into clear, actionable insight.
+            <p className="font-light" style={{ fontSize: "1.2rem", lineHeight: 1.9, color: "var(--muted)" }}>
+              I&apos;m a data scientist and AI engineer who believes the best analytical tools are the ones people actually want to use. I combine rigorous statistical thinking with production-grade engineering to build applications that turn complex data into clear, actionable insight.
             </p>
           </div>
         </div>

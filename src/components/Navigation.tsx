@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Projects", target: "/projects", isRoute: true },
@@ -18,29 +18,32 @@ const WRITING_LINKS = [
 ];
 
 export default function Navigation() {
-  const [navReady, setNavReady] = useState(false);
+  const pathname = usePathname();
+  const [navReady, setNavReady] = useState(() => pathname !== "/");
   const [menuOpen, setMenuOpen] = useState(false);
   const [writingOpen, setWritingOpen] = useState(false);
-  const pathname = usePathname();
+  const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // On non-homepage pages, show nav immediately
+    // On homepage, show nav based on scroll position
     if (pathname !== "/") {
-      setNavReady(true);
       return;
     }
 
-    // On homepage, show nav based on scroll position
     const handler = () => {
       const vh = window.innerHeight;
       const threshold = vh * 0.6;
       const progress = window.scrollY / threshold;
       setNavReady(progress > 0.85);
     };
+
     window.addEventListener("scroll", handler, { passive: true });
     handler();
-    return () => window.removeEventListener("scroll", handler);
+
+    return () => {
+      window.removeEventListener("scroll", handler);
+    };
   }, [pathname]);
 
   // Close dropdown when clicking outside
@@ -65,8 +68,8 @@ export default function Navigation() {
       const el = document.getElementById(link.target);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      // Navigate to homepage with hash
-      window.location.href = `/#${link.target}`;
+      // Navigate to homepage with hash without mutating global window.location
+      router.push(`/#${link.target}`);
     }
   };
 

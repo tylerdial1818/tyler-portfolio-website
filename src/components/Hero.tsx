@@ -23,8 +23,8 @@ function RotatingText({ lines }: { lines: string[] }) {
     <div style={{ maxWidth: "640px" }}>
       <p
         style={{
-          fontSize: "1.2rem",
-          lineHeight: 1.8,
+          fontSize: "1.3rem",
+          lineHeight: 1.9,
           color: "var(--muted)",
           transition: "opacity 0.6s ease, transform 0.6s ease",
           opacity: visible ? 1 : 0,

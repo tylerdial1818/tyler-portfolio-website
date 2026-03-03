@@ -191,7 +191,7 @@ export default function BooksPage() {
                 maxWidth: "600px",
               }}
             >
-              Textbooks and research papers I'm currently reading as part of my Northwestern MSDS coursework and consulting work.
+              Textbooks and research papers I&apos;m currently reading as part of my Northwestern MSDS coursework and consulting work.
             </p>
             <BooksGrid books={academicBooks} columns={4} />
           </>

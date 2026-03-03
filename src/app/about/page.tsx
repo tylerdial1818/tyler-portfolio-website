@@ -62,7 +62,7 @@ export default function AboutPage() {
           }}
         >
           <p style={{ marginBottom: "1.5rem" }}>
-            I'm Tyler Dial, founder of <strong>Dialed Intelligence</strong> — an AI consulting and product development practice focused on mission-driven organizations and small to mid-market businesses.
+            I&apos;m Tyler Dial, founder of <strong>Dialed Intelligence</strong> — an AI consulting and product development practice focused on mission-driven organizations and small to mid-market businesses.
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            I'm currently completing my Master's in Data Science at Northwestern University (graduating June 2026), with coursework in deep learning, natural language processing, and AI agents.
+            I&apos;m currently completing my Master&apos;s in Data Science at Northwestern University (graduating June 2026), with coursework in deep learning, natural language processing, and AI agents.
           </p>
 
           <h2
@@ -170,7 +170,7 @@ export default function AboutPage() {
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            My technical stack centers on Python, with expertise in spatial analysis (GeoPandas, PostGIS), machine learning (TensorFlow, scikit-learn), and AI agent frameworks (LangChain, LangGraph). I'm comfortable with both statistical modeling and modern deep learning approaches.
+            My technical stack centers on Python, with expertise in spatial analysis (GeoPandas, PostGIS), machine learning (TensorFlow, scikit-learn), and AI agent frameworks (LangChain, LangGraph). I&apos;m comfortable with both statistical modeling and modern deep learning approaches.
           </p>
 
           <h2
@@ -186,11 +186,11 @@ export default function AboutPage() {
           </h2>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            I live in Salt Lake City. I read widely — fiction, nonfiction, philosophy, economics, sociology. I'm interested in how systems shape outcomes and how data can reveal patterns that help reduce suffering.
+            I live in Salt Lake City. I read widely — fiction, nonfiction, philosophy, economics, sociology. I&apos;m interested in how systems shape outcomes and how data can reveal patterns that help reduce suffering.
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            I believe relationships and community matter more than anything else. I'm building a business not just to earn a living, but to gain the resources and influence to make a difference on the social issues I care about.
+            I believe relationships and community matter more than anything else. I&apos;m building a business not just to earn a living, but to gain the resources and influence to make a difference on the social issues I care about.
           </p>
         </div>
       </section>

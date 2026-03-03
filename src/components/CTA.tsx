@@ -17,11 +17,11 @@ export default function CTA() {
       <Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Contact</div>
+            <div className="uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.22em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Contact</div>
             <h2 className="font-display font-[800]" style={{ fontSize: "clamp(3rem, 7vw, 6rem)", letterSpacing: "-0.04em", lineHeight: 0.96, marginBottom: "2.5rem" }}>
               Let&apos;s<br />connect<span style={{ color: "var(--accent)" }}>.</span>
             </h2>
-            <p className="max-w-[380px]" style={{ color: "var(--muted-dark)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "3rem" }}>
+            <p className="max-w-[420px]" style={{ color: "var(--muted-dark)", fontSize: "1.15rem", lineHeight: 1.9, marginBottom: "3rem" }}>
               Open to collaborations, interesting problems, and good conversation.
             </p>
             <a href="https://www.linkedin.com/in/tyler-dial18/" target="_blank" rel="noopener noreferrer" className="cta-btn inline-block uppercase" style={{ padding: "1rem 2.8rem", border: "1px solid rgba(255,255,255,0.15)", fontSize: "0.72rem", letterSpacing: "0.16em", color: "#fff", borderRadius: 2, marginBottom: "3rem" }}>

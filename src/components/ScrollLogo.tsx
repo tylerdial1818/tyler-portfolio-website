@@ -28,7 +28,7 @@ export default function ScrollLogo() {
 
       // Font size: responsive hero size → nav size
       const heroSize = Math.min(Math.max(vw * 0.1, 56), 128); // px
-      const navSize = 16.8; // ~1.05rem
+      const navSize = 33.6; // ~2.1rem (2x previous final size)
       const fontSize = heroSize + (navSize - heroSize) * t;
 
       // Write font-size first, then read width for centering calc

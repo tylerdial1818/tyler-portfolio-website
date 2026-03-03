@@ -36,14 +36,14 @@
 /* ─── V5 Design Tokens ─── */
 :root {
   --white: #ffffff;
-  --ink: #0a0a0a;
+  --ink: #050505;
   --accent: #3b82f6;  /* Blue accent inspired by workoholics.es */
   --accent-soft: rgba(59, 130, 246, 0.08);
-  --muted: rgba(10, 10, 10, 0.4);
-  --muted-dark: rgba(255, 255, 255, 0.4);
-  --rule: rgba(10, 10, 10, 0.1);
-  --rule-dark: rgba(255, 255, 255, 0.1);
-  --bg-light: #f9f8f5;  /* Warm off-white background */
+  --muted: rgba(5, 5, 5, 0.7);
+  --muted-dark: rgba(255, 255, 255, 0.78);
+  --rule: rgba(10, 10, 10, 0.16);
+  --rule-dark: rgba(255, 255, 255, 0.22);
+  --bg-light: #f5f3ef;  /* Slightly warmer, higher-contrast background */
 }
 
 @theme inline {
@@ -73,6 +73,8 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.8;
   overflow-x: hidden;
   background: var(--bg-light);
   color: var(--ink);

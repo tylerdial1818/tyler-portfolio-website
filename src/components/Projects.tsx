@@ -50,10 +50,10 @@ export default function Projects() {
         <Reveal delay={0.2}>
           <p
             style={{
-              fontSize: "1.15rem",
-              lineHeight: 1.8,
-              color: "rgba(255,255,255,0.7)",
-              maxWidth: "640px",
+              fontSize: "1.25rem",
+              lineHeight: 1.9,
+              color: "var(--muted-dark)",
+              maxWidth: "680px",
               marginTop: "1.5rem",
             }}
           >
@@ -120,9 +120,9 @@ export default function Projects() {
 
                 <p
                   style={{
-                    fontSize: "1rem",
-                    color: "rgba(255,255,255,0.7)",
-                    lineHeight: 1.8,
+                    fontSize: "1.05rem",
+                    color: "var(--muted-dark)",
+                    lineHeight: 1.9,
                     marginBottom: "1.5rem",
                   }}
                 >
