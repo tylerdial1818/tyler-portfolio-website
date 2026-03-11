@@ -352,6 +352,41 @@ a {
   transition: transform 0.15s ease-out;
 }
 
+/* ─── Mobile Layout Helpers ─── */
+.hero-grid {
+  grid-template-columns: 1fr 390px;
+}
+
+.skill-row-grid {
+  grid-template-columns: 200px 1fr;
+}
+
+@media (max-width: 767px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-row-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .books-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .books-row-right {
+    flex-shrink: 0;
+  }
+
+  .blog-item-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
 /* Image loading fade */
 .image-loading {
   opacity: 0;

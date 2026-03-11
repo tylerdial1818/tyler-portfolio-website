@@ -8,7 +8,7 @@ export default function About() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="about" style={{ padding: `8rem ${px} 8rem`, borderTop: "1px solid var(--rule)" }}>
+    <section id="about" style={{ padding: `clamp(3rem, 8vw, 8rem) ${px}`, borderTop: "1px solid var(--rule)" }}>
       <Reveal>
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
@@ -52,7 +52,7 @@ export default function About() {
 
       {skills.map((s, i) => (
         <Reveal key={s.label} delay={i * 0.04}>
-          <div className="skill-row grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1rem 0.8rem", gridTemplateColumns: "200px 1fr" }}>
+          <div className="skill-row skill-row-grid grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1rem 0.8rem" }}>
             <span className="font-display font-semibold text-[0.85rem]" style={{ letterSpacing: "-0.01em" }}>{s.label}</span>
             <span className="text-[0.92rem] font-light" style={{ color: "var(--muted)" }}>{s.value}</span>
           </div>

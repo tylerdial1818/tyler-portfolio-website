@@ -23,7 +23,7 @@ function RotatingText({ lines }: { lines: string[] }) {
     <div style={{ maxWidth: "640px" }}>
       <p
         style={{
-          fontSize: "1.3rem",
+          fontSize: "clamp(1rem, 3.5vw, 1.3rem)",
           lineHeight: 1.9,
           color: "var(--muted)",
           transition: "opacity 0.6s ease, transform 0.6s ease",
@@ -83,9 +83,8 @@ export default function Hero() {
         }}
       >
         <div
-          className="max-w-[1600px] mx-auto w-full grid items-start"
+          className="hero-grid max-w-[1600px] mx-auto w-full grid items-start"
           style={{
-            gridTemplateColumns: "1fr 390px",
             gap: "3rem",
           }}
         >

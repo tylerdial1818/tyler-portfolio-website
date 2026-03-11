@@ -7,7 +7,7 @@ export default function Books() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="books" style={{ padding: `10rem ${px}`, background: "var(--ink)", color: "#fff" }}>
+    <section id="books" style={{ padding: `clamp(3rem, 8vw, 10rem) ${px}`, background: "var(--ink)", color: "#fff" }}>
       <Reveal>
         <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Reading</div>
         <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "1.5rem" }}>Book Shelf</h2>
@@ -44,7 +44,7 @@ export default function Books() {
       </Reveal>
       {recentlyRead.map((book, i) => (
         <Reveal key={book.title} delay={i * 0.04}>
-          <div className="bk-row flex justify-between items-center py-5" style={{ borderTop: "1px solid var(--rule-dark)" }}>
+          <div className="bk-row books-row flex justify-between items-center py-5" style={{ borderTop: "1px solid var(--rule-dark)" }}>
             <div className="flex items-baseline gap-4">
               <span className="bk-title font-display font-medium text-[0.92rem]">{book.title}</span>
               <span className="text-[0.76rem] italic" style={{ color: "var(--muted-dark)" }}>{book.author}</span>

@@ -11,7 +11,7 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        padding: `12rem ${px} 10rem`,
+        padding: `clamp(4rem, 10vw, 12rem) ${px} clamp(3rem, 8vw, 10rem)`,
         background: "var(--ink)",
         color: "#fff",
       }}
@@ -68,7 +68,7 @@ export default function Projects() {
       <div
         className="max-w-[1600px] mx-auto grid gap-16"
         style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(500px, 100%), 1fr))",
         }}
       >
         {projects.map((p, i) => {

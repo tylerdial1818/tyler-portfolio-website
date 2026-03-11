@@ -8,7 +8,7 @@ export default function Blog() {
   const px = "clamp(2rem, 7vw, 7rem)";
 
   return (
-    <section id="blog" style={{ padding: `10rem ${px}` }}>
+    <section id="blog" style={{ padding: `clamp(3rem, 8vw, 10rem) ${px}` }}>
       <Reveal>
         <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.5rem" }}>Writing</div>
         <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "5rem" }}>Recent Writing</h2>
@@ -21,7 +21,7 @@ export default function Blog() {
               <span className="font-body text-[0.68rem]" style={{ color: "var(--accent)" }}>[0{i + 1}]</span>
               <span style={{ fontSize: "0.6rem", letterSpacing: "0.08em", padding: "0.22rem 0.6rem", border: "1px solid var(--rule)", borderRadius: 100, color: "var(--accent)" }}>{post.tag}</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="blog-item-bottom flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <h3 className="bl-title font-display font-semibold" style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.6rem)", letterSpacing: "-0.02em" }}>{post.title}</h3>
                 <span className="bl-arrow text-lg shrink-0" style={{ color: "var(--accent)" }}>&#8599;</span>
