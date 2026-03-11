@@ -14,7 +14,7 @@ const NAV_LINKS = [
 
 const WRITING_LINKS = [
   { label: "Personal Writing", url: "https://substack.com/@tylerdial1818?utm_source=user-menu", external: true },
-  { label: "Professional Writing", url: "/blog", external: false },
+  { label: "Professional Writing", url: "/#blog", external: false, scrollTo: "blog" },
 ];
 
 export default function Navigation() {
@@ -152,6 +152,34 @@ export default function Navigation() {
                         >
                           {w.label}
                         </a>
+                      ) : w.scrollTo ? (
+                        <button
+                          key={w.label}
+                          onClick={() => {
+                            setWritingOpen(false);
+                            if (pathname === "/") {
+                              const el = document.getElementById(w.scrollTo);
+                              if (el) el.scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              router.push(w.url);
+                            }
+                          }}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            textAlign: "left",
+                            padding: "0.6rem 1.2rem",
+                            fontSize: "0.78rem",
+                            color: "var(--ink)",
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            whiteSpace: "nowrap",
+                          }}
+                          className="nav-a"
+                        >
+                          {w.label}
+                        </button>
                       ) : (
                         <Link
                           key={w.label}
@@ -248,6 +276,23 @@ export default function Navigation() {
                 >
                   {w.label}
                 </a>
+              ) : w.scrollTo ? (
+                <button
+                  key={w.label}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (pathname === "/") {
+                      const el = document.getElementById(w.scrollTo);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      router.push(w.url);
+                    }
+                  }}
+                  className="font-display text-2xl font-bold bg-transparent border-none"
+                  style={{ color: "var(--ink)", cursor: "pointer" }}
+                >
+                  {w.label}
+                </button>
               ) : (
                 <Link
                   key={w.label}

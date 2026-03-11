@@ -22,6 +22,7 @@ export const projects: Project[] = [
     desc: "Lifecycle management app demo with full ML pipeline and multi-agent workflows.",
     gradient: "linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2333 100%)",
     image: "/images/retain_logo.png",
+    link: "https://retain-demo.vercel.app/",
   },
   {
     title: "Housing Pulse",

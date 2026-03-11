@@ -103,7 +103,7 @@ export default function Hero() {
                   marginBottom: "2.5rem",
                 }}
               >
-                <TypedText texts={["AGENTIC AI ENGINEER", "DATA SCIENCE + ML ENGINEERING", "MULTI-AGENT WORKFLOWS & RAG ENGINEERING"]} />
+                <TypedText texts={["AGENTIC AI ENGINEER", "ECONOMETRICS & CAUSAL ML", "MULTI-AGENT WORKFLOWS & RAG ENGINEERING"]} />
               </div>
             </Reveal>
 
@@ -118,7 +118,7 @@ export default function Hero() {
                   marginBottom: "3.5rem",
                 }}
               >
-                AI for Humanity
+                Data Science + AI/ML Engineering
               </h1>
             </Reveal>
 
@@ -127,7 +127,7 @@ export default function Hero() {
               <RotatingText
                 lines={[
                   "Deep technical expertise in data science and agentic AI engineering. I build AI sysetms that solve real-world problems with real ROI.",
-                  "Social impact data scientist working with nonprofit and humanitarian organizations to make the world safer, healthier, and more equitable.",
+                  "Northwestern MSDS. Econometrics background, engineering execution. I design end-to-end systems including feature pipelines, prediction models, and multi-agent workflows that turn risk scores into actions.",
                 ]}
               />
             </Reveal>

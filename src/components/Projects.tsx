@@ -95,9 +95,9 @@ export default function Projects() {
                     height={600}
                     className="w-full h-full"
                     style={{
-                      objectFit: p.image.includes("retain_logo") ? "contain" : "cover",
+                      objectFit: "cover",
                       opacity: p.image.includes("retain_logo") ? 0.85 : 1,
-                      padding: p.image.includes("retain_logo") ? "3rem" : 0,
+                      transform: p.image.includes("retain_logo") ? "scale(1.5)" : undefined,
                     }}
                   />
                 )}
