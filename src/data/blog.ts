@@ -3,25 +3,29 @@ export interface BlogPost {
   tag: string;
   date: string;
   slug: string;
+  href?: string;
 }
 
 export const blogPosts: BlogPost[] = [
   {
-    title: "Why I Stopped Using Notebooks for Production ML",
-    tag: "Engineering",
-    date: "Jan 2025",
-    slug: "notebooks-production-ml",
+    title: "Reducing Churn with ML & AI in a CI/CD Application",
+    tag: "MSDS Report",
+    date: "March 2026",
+    slug: "Reducing-Churn-with-ML-and-AI",
+    href: "/writing/Reducing-Churn-with-ML-and-AI.pdf",
   },
   {
-    title: "A Visual Guide to Bayesian Optimization",
-    tag: "Tutorial",
-    date: "Dec 2024",
-    slug: "bayesian-optimization-visual-guide",
+    title: "The AI Transition Has Started",
+    tag: "Personal Substack",
+    date: "February 2026",
+    slug: "the-ai-transition-has-started",
+    href: "https://tylerdial1818.substack.com/p/the-ai-transition-has-started",
   },
   {
-    title: "Building Real-Time Dashboards with DuckDB + WASM",
-    tag: "Deep Dive",
-    date: "Nov 2024",
-    slug: "duckdb-wasm-dashboards",
+    title: "Predicting Economic Volatility With Deep Learning Methods",
+    tag: "MSDS Report",
+    date: "December 2025",
+    slug: "Predicting-Economic-Volatility",
+    href: "/writing/Predicting-Economic-Volatility.pdf",
   },
 ];
