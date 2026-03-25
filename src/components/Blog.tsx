@@ -11,7 +11,7 @@ export default function Blog() {
     <section id="blog" style={{ padding: `clamp(3rem, 8vw, 10rem) ${px}` }}>
       <Reveal>
         <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.5rem" }}>Writing</div>
-        <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "5rem" }}>Recent Writing</h2>
+        <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "clamp(2.5rem, 6vw, 5rem)" }}>Recent Writing</h2>
       </Reveal>
 
       {blogPosts.map((post, i) => {
@@ -26,7 +26,7 @@ export default function Blog() {
                 <h3 className="bl-title font-display font-semibold" style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.6rem)", letterSpacing: "-0.02em" }}>{post.title}</h3>
                 <span className="bl-arrow text-lg shrink-0" style={{ color: "var(--accent)" }}>&#8599;</span>
               </div>
-              <span className="text-[0.76rem] shrink-0 ml-8" style={{ color: "var(--accent)" }}>{post.date}</span>
+              <span className="blog-date text-[0.76rem] shrink-0" style={{ color: "var(--accent)" }}>{post.date}</span>
             </div>
           </div>
         );

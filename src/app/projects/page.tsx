@@ -20,59 +20,55 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
           marginBottom: "1rem",
         }}
       >
-        <div>
-          <h3
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: 600,
-              color: "var(--ink)",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {project.title}
-          </h3>
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  padding: "0.25rem 0.75rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  color: "var(--accent)",
-                  background: "var(--accent-soft)",
-                  borderRadius: "100px",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        <h3
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.5rem)",
+            fontWeight: 600,
+            color: "var(--ink)",
+            marginBottom: "0.75rem",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {project.title}
+        </h3>
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              style={{
+                padding: "0.25rem 0.75rem",
+                fontSize: "0.75rem",
+                fontWeight: 500,
+                color: "var(--accent)",
+                background: "var(--accent-soft)",
+                borderRadius: "100px",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 500,
+                color: "var(--accent)",
+                textDecoration: "none",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                marginLeft: "auto",
+              }}
+            >
+              View Project &rarr;
+            </a>
+          )}
         </div>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              color: "var(--accent)",
-              textDecoration: "none",
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-            }}
-          >
-            View Project &rarr;
-          </a>
-        )}
       </div>
       <p
         style={{
@@ -127,7 +123,7 @@ export default function ProjectsPage() {
             lineHeight: 1.6,
           }}
         >
-          Data science and engineering projects that solve real problems. Machine learning pipelines, spatial analytics, optimization models — built for scale and impact.
+          Data science and engineering work. ML pipelines, spatial analytics, optimization models. Built to ship.
         </p>
       </section>
 

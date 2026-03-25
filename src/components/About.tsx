@@ -40,7 +40,7 @@ export default function About() {
               About<br /><span style={{ color: "var(--accent)" }}>Me</span>
             </h2>
             <p className="font-light" style={{ fontSize: "1.2rem", lineHeight: 1.9, color: "var(--muted)" }}>
-              I&apos;m a data scientist and AI engineer who believes the best analytical tools are the ones people actually want to use. I combine rigorous statistical thinking with production-grade engineering to build applications that turn complex data into clear, actionable insight.
+              I work across the full stack from model to product. I build tools that take messy data and surface the decisions hidden inside it.
             </p>
           </div>
         </div>

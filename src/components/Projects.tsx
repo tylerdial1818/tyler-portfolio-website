@@ -17,7 +17,7 @@ export default function Projects() {
       }}
     >
       {/* Section Header */}
-      <div className="max-w-[1600px] mx-auto" style={{ marginBottom: "6rem" }}>
+      <div className="max-w-[1600px] mx-auto" style={{ marginBottom: "clamp(3rem, 8vw, 6rem)" }}>
         <Reveal>
           <div style={{ marginBottom: "2.5rem" }}>
             <div
@@ -57,17 +57,17 @@ export default function Projects() {
               marginTop: "1.5rem",
             }}
           >
-            From AI prototypes to production-grade applications, each project
-            showcases the intersection of rigorous data science and elegant
-            engineering.
+            From prototype to deployed product. Each project starts with a
+            real problem and ends with a system that runs.
           </p>
         </Reveal>
       </div>
 
       {/* Projects Grid */}
       <div
-        className="max-w-[1600px] mx-auto grid gap-16"
+        className="max-w-[1600px] mx-auto grid"
         style={{
+          gap: "clamp(2rem, 5vw, 4rem)",
           gridTemplateColumns: "repeat(auto-fit, minmax(min(500px, 100%), 1fr))",
         }}
       >

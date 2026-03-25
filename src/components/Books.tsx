@@ -11,8 +11,8 @@ export default function Books() {
       <Reveal>
         <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Reading</div>
         <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "1.5rem" }}>Book Shelf</h2>
-        <p className="text-[1.05rem] max-w-[500px]" style={{ color: "var(--muted-dark)", lineHeight: 1.9, marginBottom: "4rem" }}>
-          What I&apos;m reading and what&apos;s shaped my thinking. Mostly at the intersection of data, systems, and design.
+        <p className="text-[1.05rem] max-w-[500px]" style={{ color: "var(--muted-dark)", lineHeight: 1.9, marginBottom: "clamp(2rem, 5vw, 4rem)" }}>
+          What I&apos;m reading and what&apos;s shaped my thinking. Mostly data and systems, with a lot of detours.
         </p>
       </Reveal>
 

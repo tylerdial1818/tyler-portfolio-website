@@ -15,7 +15,7 @@ export default function CTA() {
   return (
     <section id="connect" style={{ padding: `clamp(4rem, 10vw, 12rem) ${px} clamp(3rem, 8vw, 10rem)`, background: "var(--ink)", color: "#fff" }}>
       <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center" style={{ gap: "clamp(2.5rem, 5vw, 4rem)" }}>
           <div>
             <div className="uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.22em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Contact</div>
             <h2 className="font-display font-[800]" style={{ fontSize: "clamp(3rem, 7vw, 6rem)", letterSpacing: "-0.04em", lineHeight: 0.96, marginBottom: "2.5rem" }}>

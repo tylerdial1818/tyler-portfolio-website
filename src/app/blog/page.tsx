@@ -37,10 +37,10 @@ export default function BlogIndex() {
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`}>
             <div
-              className="blog-row flex justify-between items-center"
-              style={{ padding: "1.6rem 0.5rem" }}
+              className="blog-row flex flex-col sm:flex-row sm:justify-between sm:items-center"
+              style={{ padding: "1.6rem 0.5rem", gap: "0.5rem" }}
             >
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-3 sm:gap-5 flex-wrap">
                 <span className="tag-light">{post.tag}</span>
                 <h3
                   className="blog-title font-display font-semibold"
@@ -53,7 +53,7 @@ export default function BlogIndex() {
                 </h3>
               </div>
               <span
-                className="text-[0.78rem] whitespace-nowrap ml-6"
+                className="text-[0.78rem] whitespace-nowrap"
                 style={{ color: "var(--muted-light)" }}
               >
                 {new Date(post.date).toLocaleDateString("en-US", {

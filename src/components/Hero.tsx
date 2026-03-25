@@ -79,7 +79,7 @@ export default function Hero() {
       {/* Hero Content */}
       <section
         style={{
-          padding: `6rem ${px} 4rem`,
+          padding: `clamp(3rem, 8vw, 6rem) ${px} clamp(2rem, 5vw, 4rem)`,
         }}
       >
         <div
@@ -95,11 +95,11 @@ export default function Hero() {
               <div
                 className="font-normal"
                 style={{
-                  fontSize: "1.5rem",
-                  letterSpacing: "0.2em",
+                  fontSize: "clamp(0.85rem, 3.5vw, 1.5rem)",
+                  letterSpacing: "clamp(0.08em, 1vw, 0.2em)",
                   textTransform: "uppercase",
                   color: "var(--accent)",
-                  marginBottom: "2.5rem",
+                  marginBottom: "clamp(1.5rem, 4vw, 2.5rem)",
                 }}
               >
                 <TypedText texts={["AGENTIC AI ENGINEER", "ECONOMETRICS & CAUSAL ML", "MULTI-AGENT WORKFLOWS & RAG ENGINEERING"]} />
@@ -114,7 +114,7 @@ export default function Hero() {
                   fontSize: "clamp(3rem, 6vw, 5.5rem)",
                   lineHeight: 0.95,
                   letterSpacing: "-0.05em",
-                  marginBottom: "3.5rem",
+                  marginBottom: "clamp(2rem, 5vw, 3.5rem)",
                 }}
               >
                 Data Science + AI/ML Engineering
@@ -125,7 +125,7 @@ export default function Hero() {
             <Reveal delay={0.2}>
               <RotatingText
                 lines={[
-                  "Deep technical expertise in data science and agentic AI engineering. I build AI sysetms that solve real-world problems with real ROI.",
+                  "Background in data science and agentic AI engineering. I build systems that solve specific problems, with results you can measure.",
                   "Northwestern MSDS. Econometrics background, engineering execution. I design end-to-end systems including feature pipelines, prediction models, and multi-agent workflows that turn risk scores into actions.",
                 ]}
               />

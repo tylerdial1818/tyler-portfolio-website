@@ -42,7 +42,7 @@ export default function AboutPage() {
             lineHeight: 1.6,
           }}
         >
-          Building AI-enabled decision tools for mission-driven organizations.
+          Data and AI tools for organizations doing hard work.
         </p>
       </section>
 
@@ -62,11 +62,11 @@ export default function AboutPage() {
           }}
         >
           <p style={{ marginBottom: "1.5rem" }}>
-            I&apos;m Tyler Dial, founder of <strong>Dialed Intelligence</strong> — an AI consulting and product development practice focused on mission-driven organizations and small to mid-market businesses.
+            I&apos;m Tyler Dial, founder of <strong>Dialed Intelligence</strong>: an AI consulting and product development practice focused on nonprofits, civic orgs, and small to mid-market businesses.
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            I build AI-enabled decision tools and data products that help organizations make better choices. My work blends econometrics, data science, and pragmatic engineering to deliver systems that are both powerful and understandable.
+            I build decision tools and data products that help organizations make better choices. My background spans econometrics and software engineering. I build systems that are technically sound and actually usable.
           </p>
 
           <h2
@@ -123,7 +123,7 @@ export default function AboutPage() {
               >
                 •
               </span>
-              <strong>AI Prototype Sprints</strong> — 2-4 week engagements to validate feasibility and ROI before full builds
+              <strong>AI Prototype Sprints:</strong> 2-4 week engagements to validate feasibility and ROI before full builds
             </li>
             <li style={{ marginBottom: "1rem", paddingLeft: "1.5rem", position: "relative" }}>
               <span
@@ -136,7 +136,7 @@ export default function AboutPage() {
               >
                 •
               </span>
-              <strong>Decision Analytics & Modeling</strong> — Statistical and optimization models for recurring, high-stakes decisions
+              <strong>Decision Analytics & Modeling:</strong> Statistical and optimization models for recurring, high-stakes decisions
             </li>
             <li style={{ marginBottom: "1rem", paddingLeft: "1.5rem", position: "relative" }}>
               <span
@@ -149,7 +149,7 @@ export default function AboutPage() {
               >
                 •
               </span>
-              <strong>AI Workflow Automation</strong> — Custom pipelines and agents for repetitive knowledge work
+              <strong>AI Workflow Automation:</strong> Custom pipelines and agents for repetitive knowledge work
             </li>
           </ul>
 
@@ -166,7 +166,7 @@ export default function AboutPage() {
           </h2>
 
           <p style={{ marginBottom: "1.5rem" }}>
-            I prefer boring, reliable technology. I optimize for learning and ROI first. I ship small and validate early. I believe in human-in-the-loop systems — AI should augment decision-making, not replace it.
+            I prefer boring, reliable technology. I optimize for learning and ROI first. I ship small and validate early. I think AI works best when it helps people make better decisions, not when it makes decisions for them.
           </p>
 
           <p style={{ marginBottom: "1.5rem" }}>
