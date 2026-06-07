@@ -7,6 +7,7 @@ const experience = [
   "Zions Bank",
   "Ampleo",
   "Socio",
+  "Messina Group Consulting",
 ];
 
 const skills = [
@@ -18,6 +19,8 @@ const skills = [
   "AI Engineering",
   "Decision Analytics",
   "Optimization Systems",
+  "Custom Data Systems",
+  "Dynamic Pricing Models",
   "AI Agent Systems",
   "Context Engineering",
   "RAG Engineering",

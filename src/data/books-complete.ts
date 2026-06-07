@@ -8,6 +8,7 @@ export interface Book {
   year: number;
   genre: 'fiction' | 'nonfiction' | 'academic';
   category?: string;
+  coverUrl?: string;
   incomplete?: boolean;
   rereading?: boolean;
 }
@@ -22,12 +23,23 @@ export const academicBooks: Book[] = [
 
 // 2026 Books
 export const books2026: Book[] = [
-  { title: "On Earth We're Briefly Gorgeous", author: "Ocean Vuong", rating: 4.3, year: 2026, genre: 'fiction', category: 'novel' },
-  { title: "Stoner", author: "John Williams", rating: 4.4, year: 2026, genre: 'fiction', category: 'novel' },
-  { title: "The Keep", author: "Jennifer Egan", rating: 3.9, year: 2026, genre: 'fiction', category: 'novel' },
-  { title: "Evenings and Weekends", author: "Oisín McKenna", rating: 4.8, year: 2026, genre: 'fiction', category: 'novel' },
-  { title: "Gang Leader for a Day", author: "Sudhir Venkatesh", rating: 4.2, year: 2026, genre: 'nonfiction', category: 'sociology' },
-  { title: "Freedom", author: "Jonathan Franzen", rating: 4.6, year: 2026, genre: 'fiction', category: 'novel' }
+  { title: "On Earth We're Briefly Gorgeous", author: "Ocean Vuong", rating: 4.3, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/id/10030425-L.jpg" },
+  { title: "Stoner", author: "John Williams", rating: 4.4, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/id/8310729-L.jpg" },
+  { title: "The Keep", author: "Jennifer Egan", rating: 3.9, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/id/1502385-L.jpg" },
+  { title: "Evenings and Weekends", author: "Oisín McKenna", rating: 4.8, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/id/14651259-L.jpg" },
+  { title: "Gang Leader for a Day", author: "Sudhir Venkatesh", rating: 4.2, year: 2026, genre: 'nonfiction', category: 'sociology', coverUrl: "https://covers.openlibrary.org/b/id/2960870-L.jpg" },
+  { title: "Freedom", author: "Jonathan Franzen", rating: 4.6, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/isbn/9780374158460-L.jpg" },
+  { title: "Rejection", author: "Tony Tulathimutte", rating: 3.1, year: 2026, genre: 'fiction', category: 'short-stories', incomplete: true, coverUrl: "https://covers.openlibrary.org/b/id/14845882-L.jpg" },
+  { title: "One Day, Everyone Will Have Always Been Against This", author: "Omar El Akkad", rating: 4.5, year: 2026, genre: 'nonfiction', category: 'politics', coverUrl: "https://covers.openlibrary.org/b/id/14833469-L.jpg" },
+  { title: "Hope for Cynics", author: "Jamil Zaki", rating: 2.5, year: 2026, genre: 'nonfiction', category: 'psychology', coverUrl: "https://covers.openlibrary.org/b/id/14751614-L.jpg" },
+  { title: "James", author: "Percival Everett", rating: 3.4, year: 2026, genre: 'fiction', category: 'novel', coverUrl: "https://covers.openlibrary.org/b/id/15094964-L.jpg" },
+  { title: "Blood Meridian", author: "Cormac McCarthy", rating: 3.5, year: 2026, genre: 'fiction', category: 'classic', rereading: true, coverUrl: "https://covers.openlibrary.org/b/id/419991-L.jpg" },
+  { title: "Neuromancer", author: "William Gibson", rating: 4.5, year: 2026, genre: 'fiction', category: 'science-fiction', coverUrl: "https://covers.openlibrary.org/b/id/283860-L.jpg" },
+  { title: "Born to Run", author: "Bruce Springsteen", rating: 4.6, year: 2026, genre: 'nonfiction', category: 'memoir', coverUrl: "https://covers.openlibrary.org/b/id/962287-L.jpg" },
+  { title: "The Genius Myth", author: "Helen Lewis", rating: 4.4, year: 2026, genre: 'nonfiction', category: 'culture' },
+  { title: "Train Dreams", author: "Denis Johnson", rating: 4.1, year: 2026, genre: 'fiction', category: 'novella', coverUrl: "https://covers.openlibrary.org/b/id/7079698-L.jpg" },
+  { title: "Casino Royale", author: "Ian Fleming", rating: 4.3, year: 2026, genre: 'fiction', category: 'spy-fiction', coverUrl: "https://covers.openlibrary.org/b/id/5540820-L.jpg" },
+  { title: "Why Machines Learn", author: "Anil Ananthaswamy", rating: 4.4, year: 2026, genre: 'nonfiction', category: 'technology', coverUrl: "https://covers.openlibrary.org/b/id/15139089-L.jpg" }
 ];
 
 // 2025 Books (UPDATED RATINGS)

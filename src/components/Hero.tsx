@@ -37,7 +37,7 @@ export default function Hero() {
                 <div className="eyebrow">Data Scientist &amp; AI / ML Engineer</div>
               </Reveal>
 
-              <h1 className="display" style={{ marginTop: "clamp(20px, 4vh, 44px)" }}>
+              <h1 className="display hero-display" style={{ marginTop: "clamp(20px, 4vh, 44px)" }}>
                 {headlineLines.map((line, index) => (
                   <span className="line" key={line}>
                     <span style={{ "--d": `${index * 90}ms` } as CSSProperties}>

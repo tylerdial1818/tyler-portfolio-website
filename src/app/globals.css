@@ -154,6 +154,10 @@ button {
   margin: 0;
 }
 
+.hero-display {
+  font-size: clamp(36.8px, 8.8vw, 144px);
+}
+
 .h2 {
   font-size: clamp(40px, 7vw, 124px);
   font-weight: 500;

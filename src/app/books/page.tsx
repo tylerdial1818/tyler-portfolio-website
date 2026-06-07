@@ -65,9 +65,20 @@ function ReadingCard({ book }: { book: (typeof reading)[number] }) {
 function ReadCard({ book }: { book: Book }) {
   return (
     <article className="bookcard">
-      <div className="bookcard__cover">
-        <span>{book.title}</span>
-        <small>{book.author}</small>
+      <div
+        className={`bookcard__cover${book.coverUrl ? " bookcard__cover--image" : ""}`}
+        style={
+          book.coverUrl
+            ? { backgroundImage: `url(${book.coverUrl})` }
+            : undefined
+        }
+      >
+        {!book.coverUrl && (
+          <>
+            <span>{book.title}</span>
+            <small>{book.author}</small>
+          </>
+        )}
       </div>
       <h3 className="bookcard__title">{book.title}</h3>
       <div className="bookcard__author">{book.author}</div>
@@ -292,6 +303,13 @@ export default function BooksPage() {
           justify-content: space-between;
           overflow: hidden;
           padding: clamp(18px, 2.4vw, 30px);
+        }
+
+        .bookcard__cover--image {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          padding: 0;
         }
 
         .bookcard__cover span {
