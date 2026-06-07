@@ -1,64 +1,47 @@
 "use client";
 
-import Image from "next/image";
 import Reveal from "./FadeIn";
 import { skills } from "@/data/skills";
 
 export default function About() {
-  const px = "clamp(2rem, 7vw, 7rem)";
-
   return (
-    <section id="about" style={{ padding: `clamp(3rem, 8vw, 8rem) ${px}`, borderTop: "1px solid var(--rule)" }}>
-      <Reveal>
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
-          style={{ marginBottom: "3.5rem" }}
-        >
-          {/* Left: Portrait image */}
-          <div
-            className="overflow-hidden hidden md:block"
-            style={{
-              borderRadius: 12,
-              aspectRatio: "2/3",
-              maxWidth: "400px",
-              width: "100%",
-            }}
-          >
-            <Image
-              src="/images/DSC08219-portrait.jpg"
-              alt="Tyler Dial"
-              width={800}
-              height={1200}
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <section className="section" id="about">
+      <div className="wrap">
+        <Reveal>
+          <div className="eyebrow">About</div>
+        </Reveal>
 
-          {/* Right: Heading + bio */}
-          <div className="flex flex-col justify-center">
-            <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.5rem" }}>About</div>
-            <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "2.5rem" }}>
-              About<br /><span style={{ color: "var(--accent)" }}>Me</span>
-            </h2>
-            <p className="font-light" style={{ fontSize: "1.2rem", lineHeight: 1.9, color: "var(--muted)" }}>
-              I work across the full stack from model to product. I build tools that take messy data and surface the decisions hidden inside it.
+        <div className="about__grid" style={{ marginTop: "clamp(28px, 4vh, 52px)" }}>
+          <Reveal delay={0.06}>
+            <p className="statement">
+              I work across the full stack, from model to product. I build tools
+              that take messy data and surface the decisions hidden inside it.
             </p>
+          </Reveal>
+
+          <div>
+            <Reveal delay={0.12}>
+              <div
+                className="eyebrow eyebrow--plain"
+                style={{ display: "block", marginBottom: 10 }}
+              >
+                Toolkit
+              </div>
+            </Reveal>
+
+            <div>
+              {skills.map((skill, index) => (
+                <Reveal delay={0.14 + index * 0.05} key={skill.label}>
+                  <div className="toolkit__row">
+                    <span className="toolkit__label">{skill.label}</span>
+                    <span className="toolkit__items">{skill.value}</span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
-      </Reveal>
-
-      <Reveal>
-        <div className="uppercase" style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.2rem" }}>Toolkit</div>
-      </Reveal>
-
-      {skills.map((s, i) => (
-        <Reveal key={s.label} delay={i * 0.04}>
-          <div className="skill-row skill-row-grid grid items-baseline" style={{ borderTop: "1px solid var(--rule)", padding: "1rem 0.8rem" }}>
-            <span className="font-display font-semibold text-[0.85rem]" style={{ letterSpacing: "-0.01em" }}>{s.label}</span>
-            <span className="text-[0.92rem] font-light" style={{ color: "var(--muted)" }}>{s.value}</span>
-          </div>
-        </Reveal>
-      ))}
-      <div className="h-px" style={{ background: "var(--rule)" }} />
+      </div>
     </section>
   );
 }

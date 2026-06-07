@@ -5,47 +5,50 @@ import Reveal from "./FadeIn";
 import { blogPosts } from "@/data/blog";
 
 export default function Blog() {
-  const px = "clamp(2rem, 7vw, 7rem)";
-
   return (
-    <section id="blog" style={{ padding: `clamp(3rem, 8vw, 10rem) ${px}` }}>
-      <Reveal>
-        <div className="uppercase" style={{ fontSize: "0.62rem", letterSpacing: "0.2em", color: "var(--accent)", marginBottom: "1.5rem" }}>Writing</div>
-        <h2 className="font-display font-[800]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "clamp(2.5rem, 6vw, 5rem)" }}>Recent Writing</h2>
-      </Reveal>
+    <section className="section" id="writing">
+      <div className="wrap">
+        <Reveal>
+          <div className="eyebrow">Writing</div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <h2 className="h2 h2--compact" style={{ marginTop: "0.3em" }}>
+            Recent writing
+          </h2>
+        </Reveal>
 
-      {blogPosts.map((post, i) => {
-        const content = (
-          <div className="blog-item" style={{ borderTop: "1px solid var(--rule)", padding: "2.5rem 0" }}>
-            <div className="flex items-center gap-4 mb-2.5">
-              <span className="font-body text-[0.68rem]" style={{ color: "var(--accent)" }}>[0{i + 1}]</span>
-              <span style={{ fontSize: "0.6rem", letterSpacing: "0.08em", padding: "0.22rem 0.6rem", border: "1px solid var(--rule)", borderRadius: 100, color: "var(--accent)" }}>{post.tag}</span>
-            </div>
-            <div className="blog-item-bottom flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <h3 className="bl-title font-display font-semibold" style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.6rem)", letterSpacing: "-0.02em" }}>{post.title}</h3>
-                <span className="bl-arrow text-lg shrink-0" style={{ color: "var(--accent)" }}>&#8599;</span>
-              </div>
-              <span className="blog-date text-[0.76rem] shrink-0" style={{ color: "var(--accent)" }}>{post.date}</span>
-            </div>
-          </div>
-        );
+        <div style={{ marginTop: "clamp(36px, 5vh, 64px)" }}>
+          {blogPosts.map((post, index) => {
+            const row = (
+              <>
+                <span className="writerow__n">[{String(index + 1).padStart(2, "0")}]</span>
+                <span className="writerow__t">{post.title}</span>
+                <span className="writerow__kind">{post.tag}</span>
+                <span className="writerow__date">{post.date} ↗</span>
+              </>
+            );
 
-        return (
-          <Reveal key={post.title} delay={i * 0.06}>
-            {post.href ? (
-              <a href={post.href} target="_blank" rel="noopener noreferrer">
-                {content}
-              </a>
-            ) : (
-              <Link href={`/blog/${post.slug}`}>
-                {content}
-              </Link>
-            )}
-          </Reveal>
-        );
-      })}
-      <div className="h-px" style={{ background: "var(--rule)" }} />
+            return (
+              <Reveal delay={0.06 + index * 0.07} key={post.title}>
+                {post.href ? (
+                  <a
+                    className="writerow"
+                    href={post.href}
+                    rel="noopener noreferrer"
+                    target={post.href.startsWith("http") ? "_blank" : undefined}
+                  >
+                    {row}
+                  </a>
+                ) : (
+                  <Link className="writerow" href={`/blog/${post.slug}`}>
+                    {row}
+                  </Link>
+                )}
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

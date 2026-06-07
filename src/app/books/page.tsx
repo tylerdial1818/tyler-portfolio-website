@@ -3,11 +3,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import StarRating from "@/components/StarRating";
 import {
-  hallOfFameFiction,
-  hallOfFameNonfiction,
-  academicBooks,
   books2026,
   books2025,
   books2024,
@@ -17,338 +13,385 @@ import {
   type Book,
 } from "@/data/books-complete";
 
-// Book cover component with fallback
-function BookCover({ book }: { book: Book }) {
-  const [imageError, setImageError] = useState(false);
-  
-  const getCoverUrl = () => {
-    const titleQuery = encodeURIComponent(book.title.toLowerCase());
-    return `https://covers.openlibrary.org/b/title/${titleQuery}-L.jpg`;
-  };
+const reading = [
+  {
+    title: "Designing Data-Intensive Applications",
+    author: "Martin Kleppmann",
+    pct: 72,
+  },
+  {
+    title: "Building Applications with AI Agents",
+    author: "Michael Albada",
+    pct: 45,
+  },
+  {
+    title: "Context Engineering for Observability",
+    author: "David Beale",
+    pct: 20,
+  },
+];
 
-  return (
-    <div className="book-cover-wrapper" style={{ position: "relative", paddingBottom: "150%", background: "var(--accent-soft)", borderRadius: "4px", overflow: "hidden" }}>
-      {!imageError ? (
-        <img
-          src={getCoverUrl()}
-          alt={`${book.title} cover`}
-          onError={() => setImageError(true)}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "1rem",
-            textAlign: "center",
-            background: "var(--accent-soft)",
-          }}
-        >
-          <div style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--ink)", marginBottom: "0.5rem" }}>
-            {book.title}
-          </div>
-          <div style={{ fontSize: "0.75rem", color: "var(--muted)" }}>
-            {book.author}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+const yearTabs = ["2026", "2025", "2024", "2023", "2022", "2021"] as const;
+type YearTab = (typeof yearTabs)[number];
 
-// Individual book card
-function BookCard({ book }: { book: Book }) {
+const booksByYear: Record<YearTab, Book[]> = {
+  "2026": books2026,
+  "2025": books2025,
+  "2024": books2024,
+  "2023": books2023,
+  "2022": books2022,
+  "2021": books2021,
+};
+
+function ReadingCard({ book }: { book: (typeof reading)[number] }) {
   return (
-    <div
-      className="book-card"
-      style={{
-        opacity: 0,
-        animation: "fadeInUp 0.6s ease-out forwards",
-      }}
-    >
-      <BookCover book={book} />
-      <div style={{ marginTop: "0.75rem" }}>
-        <h3
-          style={{
-            fontSize: "0.95rem",
-            fontWeight: 500,
-            color: "var(--ink)",
-            marginBottom: "0.25rem",
-            lineHeight: 1.3,
-          }}
-        >
-          {book.title}
-        </h3>
-        <p style={{ fontSize: "0.8rem", color: "var(--muted)", marginBottom: "0.5rem" }}>
-          {book.author}
-        </p>
-        {book.rating !== null && (
-          <StarRating rating={book.rating} />
-        )}
-        {book.rating === null && (
-          <span style={{ fontSize: "0.75rem", color: "var(--muted)", fontStyle: "italic" }}>
-            Currently Reading
-          </span>
-        )}
+    <article className="bookcard">
+      <div className="bookcard__cover">
+        <span>{book.title}</span>
+        <small>{book.author}</small>
       </div>
-    </div>
+      <h3 className="bookcard__title">{book.title}</h3>
+      <div className="bookcard__author">{book.author}</div>
+      <div className="bookcard__meta">
+        <span className="prog">
+          <i style={{ width: `${book.pct}%` }} />
+        </span>
+        {book.pct}%
+      </div>
+    </article>
   );
 }
 
-// Books grid
-function BooksGrid({ books, columns = 5 }: { books: Book[]; columns?: number }) {
+function ReadCard({ book }: { book: Book }) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(auto-fill, minmax(${columns === 5 ? "160px" : "180px"}, 1fr))`,
-        gap: "2rem 1.5rem",
-        marginTop: "3rem",
-      }}
-      className="books-grid"
-    >
-      {books.map((book, idx) => (
-        <div key={`${book.title}-${idx}`} style={{ animationDelay: `${idx * 0.05}s` }}>
-          <BookCard book={book} />
-        </div>
-      ))}
-    </div>
+    <article className="bookcard">
+      <div className="bookcard__cover">
+        <span>{book.title}</span>
+        <small>{book.author}</small>
+      </div>
+      <h3 className="bookcard__title">{book.title}</h3>
+      <div className="bookcard__author">{book.author}</div>
+      <div className="bookcard__meta">
+        {book.rating !== null ? `${book.rating.toFixed(1)} ★` : "Read"}
+        {book.incomplete && <span className="bookcard__flag">Incomplete</span>}
+        {book.rereading && <span className="bookcard__flag">Reread</span>}
+      </div>
+    </article>
   );
 }
 
 export default function BooksPage() {
-  const [activeTab, setActiveTab] = useState("hall-of-fame");
-
-  const tabs = [
-    { id: "hall-of-fame", label: "Hall of Fame" },
-    { id: "academic", label: "Academic & Professional" },
-    { id: "2026", label: "2026" },
-    { id: "2025", label: "2025" },
-    { id: "2024", label: "2024" },
-    { id: "2023", label: "2023" },
-    { id: "2022", label: "2022" },
-    { id: "2021", label: "2021" },
-  ];
-
-  const getTabContent = () => {
-    switch (activeTab) {
-      case "hall-of-fame":
-        return (
-          <>
-            <div style={{ marginBottom: "4rem" }}>
-              <h2
-                style={{
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  fontWeight: 700,
-                  color: "var(--ink)",
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Top Fiction
-              </h2>
-              <BooksGrid books={hallOfFameFiction} />
-            </div>
-            <div>
-              <h2
-                style={{
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  fontWeight: 700,
-                  color: "var(--ink)",
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Top Nonfiction
-              </h2>
-              <BooksGrid books={hallOfFameNonfiction} />
-            </div>
-          </>
-        );
-      case "academic":
-        return (
-          <>
-            <p
-              style={{
-                fontSize: "1.1rem",
-                color: "var(--muted)",
-                marginBottom: "2rem",
-                maxWidth: "600px",
-              }}
-            >
-              Textbooks and research papers I&apos;m currently reading as part of my Northwestern MSDS coursework and consulting work.
-            </p>
-            <BooksGrid books={academicBooks} columns={4} />
-          </>
-        );
-      case "2026":
-        return <BooksGrid books={books2026} />;
-      case "2025":
-        return <BooksGrid books={books2025} />;
-      case "2024":
-        return <BooksGrid books={books2024} />;
-      case "2023":
-        return <BooksGrid books={books2023} />;
-      case "2022":
-        return <BooksGrid books={books2022} />;
-      case "2021":
-        return <BooksGrid books={books2021} />;
-      default:
-        return null;
-    }
-  };
+  const [activeYear, setActiveYear] = useState<YearTab>("2026");
+  const selectedBooks = booksByYear[activeYear];
+  const marqueeTitles = [...books2026, ...books2026].map((book) => book.title);
 
   return (
-    <div
-      className="font-body font-light"
-      style={{ background: "var(--bg-light)", color: "var(--ink)", minHeight: "100vh" }}
-    >
+    <div style={{ background: "var(--bg)", color: "var(--fg)", minHeight: "100vh" }}>
       <Navigation />
 
-      {/* Hero Section */}
-      <section
-        style={{
-          minHeight: "50vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "clamp(8rem, 15vh, 12rem) clamp(2rem, 7vw, 7rem) 4rem",
-          textAlign: "center",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "clamp(2.5rem, 7vw, 5rem)",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.1,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Books
-        </h1>
-        <p
-          style={{
-            fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
-            color: "var(--muted)",
-            maxWidth: "600px",
-            lineHeight: 1.6,
-          }}
-        >
-          My reading history since 2021. Fiction, nonfiction, philosophy, economics, sociology — anything that helps me understand the world and build better things.
-        </p>
-      </section>
+      <main>
+        <header className="page-hero wrap">
+          <span className="eyebrow">Reading</span>
+          <h1 className="display books-display">Book shelf</h1>
+          <p className="lead">
+            What I am reading and what has shaped my thinking. Mostly data and
+            systems, with a lot of detours.
+          </p>
+        </header>
 
-      {/* Tab Navigation */}
-      <section
-        style={{
-          padding: "0 clamp(2rem, 7vw, 7rem)",
-          marginBottom: "3rem",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            flexWrap: "wrap",
-            borderBottom: "1px solid var(--rule)",
-            paddingBottom: "1rem",
-          }}
-        >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{
-                padding: "0.6rem 1.2rem",
-                fontSize: "0.9rem",
-                fontWeight: activeTab === tab.id ? 500 : 400,
-                color: activeTab === tab.id ? "var(--white)" : "var(--ink)",
-                background: activeTab === tab.id ? "var(--accent)" : "transparent",
-                border: "1px solid",
-                borderColor: activeTab === tab.id ? "var(--accent)" : "var(--rule)",
-                borderRadius: "100px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                if (activeTab !== tab.id) {
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                  e.currentTarget.style.color = "var(--accent)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== tab.id) {
-                  e.currentTarget.style.borderColor = "var(--rule)";
-                  e.currentTarget.style.color = "var(--ink)";
-                }
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className="single-marquee" aria-hidden>
+          <div className="single-marquee__track">
+            {marqueeTitles.map((title, index) => (
+              <span key={`${title}-${index}`}>{title}</span>
+            ))}
+          </div>
         </div>
-      </section>
 
-      {/* Books Content */}
-      <section
-        style={{
-          padding: "0 clamp(2rem, 7vw, 7rem) 6rem",
-          minHeight: "50vh",
-        }}
-      >
-        <div key={activeTab}>{getTabContent()}</div>
-      </section>
+        <section className="section wrap">
+          <span className="subhead">Currently reading</span>
+          <div className="bookgrid bookgrid--reading">
+            {reading.map((book) => (
+              <ReadingCard book={book} key={book.title} />
+            ))}
+          </div>
+        </section>
+
+        <section className="section wrap books-read-section">
+          <div className="books-archive-head">
+            <div>
+              <span className="subhead">Reading archive</span>
+              <h2>{activeYear} reads</h2>
+            </div>
+            <span className="books-count">{selectedBooks.length} books</span>
+          </div>
+          <div className="year-tabs" role="tablist" aria-label="Reading years">
+            {yearTabs.map((year) => (
+              <button
+                aria-selected={activeYear === year}
+                className="year-tab"
+                key={year}
+                onClick={() => setActiveYear(year)}
+                role="tab"
+                type="button"
+              >
+                {year}
+              </button>
+            ))}
+          </div>
+          <div className="bookgrid bookgrid--read">
+            {selectedBooks.map((book, index) => (
+              <ReadCard book={book} key={`${book.title}-${index}`} />
+            ))}
+          </div>
+        </section>
+      </main>
 
       <Footer />
 
-      <style jsx>{`
-        @keyframes fadeInUp {
+      <style jsx global>{`
+        .page-hero {
+          padding-top: clamp(140px, 22vh, 250px);
+          padding-bottom: clamp(36px, 7vh, 84px);
+        }
+
+        .books-display {
+          font-size: clamp(56px, 13vw, 210px);
+          margin-top: 0.1em;
+        }
+
+        .page-hero .lead {
+          margin-top: clamp(22px, 3.5vh, 40px);
+          max-width: 40ch;
+        }
+
+        .single-marquee {
+          border-bottom: 1px solid var(--line);
+          border-top: 1px solid var(--line);
+          overflow: hidden;
+          padding: clamp(18px, 2.6vw, 34px) 0;
+        }
+
+        .single-marquee__track {
+          animation: bookMarquee var(--marquee-dur) linear infinite;
+          display: flex;
+          gap: clamp(26px, 4vw, 70px);
+          width: max-content;
+        }
+
+        .single-marquee__track span {
+          color: var(--fg);
+          flex: 0 0 auto;
+          font-size: clamp(28px, 5vw, 80px);
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 1;
+          white-space: nowrap;
+        }
+
+        .single-marquee__track span::after {
+          color: var(--accent);
+          content: "/";
+          margin-left: clamp(26px, 4vw, 70px);
+        }
+
+        .subhead {
+          color: var(--muted);
+          display: block;
+          font-family: var(--mono);
+          font-size: 12px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .bookgrid {
+          display: grid;
+          gap: clamp(22px, 3vw, 44px);
+          margin-top: clamp(30px, 4.5vh, 56px);
+        }
+
+        .bookgrid--reading,
+        .bookgrid--read {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .books-read-section {
+          padding-top: 0;
+        }
+
+        .books-archive-head {
+          align-items: end;
+          display: flex;
+          gap: 24px;
+          justify-content: space-between;
+        }
+
+        .books-archive-head h2 {
+          font-size: clamp(32px, 5vw, 84px);
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 0.95;
+          margin: 0.18em 0 0;
+        }
+
+        .books-count {
+          color: var(--muted);
+          font-family: var(--mono);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        .year-tabs {
+          border-bottom: 1px solid var(--line);
+          border-top: 1px solid var(--line);
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: clamp(26px, 4vw, 48px);
+          padding: 14px 0;
+        }
+
+        .year-tab {
+          background: transparent;
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          color: var(--fg);
+          cursor: pointer;
+          font-family: var(--mono);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          line-height: 1;
+          padding: 10px 14px;
+          text-transform: uppercase;
+          transition: background 0.25s, border-color 0.25s, color 0.25s;
+        }
+
+        .year-tab:hover,
+        .year-tab[aria-selected="true"] {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: var(--accent-ink);
+        }
+
+        .bookcard {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+        }
+
+        .bookcard__cover {
+          aspect-ratio: 2 / 3;
+          align-items: flex-start;
+          background:
+            linear-gradient(90deg, rgba(0, 0, 0, 0.16), transparent 18%),
+            #efefef;
+          border: 1px solid var(--line);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          overflow: hidden;
+          padding: clamp(18px, 2.4vw, 30px);
+        }
+
+        .bookcard__cover span {
+          font-size: clamp(20px, 2.2vw, 34px);
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 0.96;
+          max-width: 10ch;
+        }
+
+        .bookcard__cover small {
+          color: var(--muted);
+          font-family: var(--mono);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          line-height: 1.3;
+          text-transform: uppercase;
+        }
+
+        .bookcard__title {
+          font-size: clamp(16px, 1.35vw, 21px);
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 1.15;
+          margin: 16px 0 0;
+        }
+
+        .bookcard__author {
+          color: var(--muted);
+          font-size: 14px;
+          margin-top: 3px;
+        }
+
+        .bookcard__meta {
+          align-items: center;
+          color: var(--accent);
+          display: flex;
+          font-family: var(--mono);
+          font-size: 13px;
+          gap: 10px;
+          margin-top: 12px;
+        }
+
+        .bookcard__flag {
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          color: var(--muted);
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          padding: 4px 7px;
+          text-transform: uppercase;
+        }
+
+        .prog {
+          background: var(--line);
+          display: inline-block;
+          flex: 1;
+          height: 2px;
+          min-width: 60px;
+        }
+
+        .prog i {
+          background: var(--accent);
+          display: block;
+          height: 100%;
+        }
+
+        @keyframes bookMarquee {
           from {
-            opacity: 0;
-            transform: translateY(20px);
+            transform: translateX(0);
           }
           to {
-            opacity: 1;
-            transform: translateY(0);
+            transform: translateX(-50%);
           }
         }
 
-        .book-card {
-          transition: transform 0.3s ease;
-        }
-
-        .book-card:hover {
-          transform: translateY(-4px);
-        }
-
-        @media (max-width: 768px) {
-          .books-grid {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
-            gap: 1.5rem 1rem !important;
+        @media (prefers-reduced-motion: reduce) {
+          .single-marquee__track {
+            animation: none;
           }
         }
 
-        @media (max-width: 480px) {
-          .books-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 1.5rem 1rem !important;
+        @media (max-width: 860px) {
+          .bookgrid--reading,
+          .bookgrid--read {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 520px) {
+          .bookgrid--reading,
+          .bookgrid--read {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 620px) {
+          .books-archive-head {
+            align-items: flex-start;
+            flex-direction: column;
           }
         }
       `}</style>

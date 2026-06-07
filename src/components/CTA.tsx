@@ -1,59 +1,52 @@
 "use client";
 
-import Image from "next/image";
 import Reveal from "./FadeIn";
 
 const SOCIAL_LINKS = [
-  { name: "GitHub", url: "https://github.com/tylerdial1818" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/tyler-dial18/" },
-  { name: "Instagram", url: "https://www.instagram.com/tyler_dial97/" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/tyler-dial18/" },
+  { label: "GitHub", url: "https://github.com/tylerdial1818" },
+  { label: "Instagram", url: "https://www.instagram.com/tyler_dial97/" },
 ];
 
 export default function CTA() {
-  const px = "clamp(2rem, 7vw, 7rem)";
-
   return (
-    <section id="connect" style={{ padding: `clamp(4rem, 10vw, 12rem) ${px} clamp(3rem, 8vw, 10rem)`, background: "var(--ink)", color: "#fff" }}>
-      <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center" style={{ gap: "clamp(2.5rem, 5vw, 4rem)" }}>
-          <div>
-            <div className="uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.22em", color: "var(--muted-dark)", marginBottom: "1.5rem" }}>Contact</div>
-            <h2 className="font-display font-[800]" style={{ fontSize: "clamp(3rem, 7vw, 6rem)", letterSpacing: "-0.04em", lineHeight: 0.96, marginBottom: "2.5rem" }}>
-              Let&apos;s<br />connect<span style={{ color: "var(--accent)" }}>.</span>
-            </h2>
-            <p className="max-w-[420px]" style={{ color: "var(--muted-dark)", fontSize: "1.15rem", lineHeight: 1.9, marginBottom: "3rem" }}>
-              Open to collaborations, interesting problems, and good conversation.
-            </p>
-            <a href="https://www.linkedin.com/in/tyler-dial18/" target="_blank" rel="noopener noreferrer" className="cta-btn inline-block uppercase" style={{ padding: "1rem 2.8rem", border: "1px solid rgba(255,255,255,0.15)", fontSize: "0.72rem", letterSpacing: "0.16em", color: "#fff", borderRadius: 2, marginBottom: "3rem" }}>
-              Connect on LinkedIn
-            </a>
-            <div className="flex gap-8">
-              {SOCIAL_LINKS.map((s) => (
-                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="nav-a text-[0.82rem]" style={{ color: "var(--muted-dark)", letterSpacing: "0.02em", cursor: "pointer" }}>{s.name}</a>
-              ))}
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <div
-              className="overflow-hidden hidden md:block"
-              style={{
-                borderRadius: 12,
-                aspectRatio: "2/3",
-                maxWidth: "380px",
-                width: "100%",
-              }}
-            >
-              <Image
-                src="/images/DSC08460-portrait.jpg"
-                alt="Tyler Dial"
-                width={800}
-                height={1200}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+    <section className="section contact" id="contact">
+      <div className="wrap">
+        <Reveal>
+          <div className="eyebrow">Contact</div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <h2 className="h2" style={{ marginTop: "0.3em" }}>
+            Let&apos;s connect.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.16}>
+          <p className="lead" style={{ marginTop: "clamp(20px, 3vh, 30px)" }}>
+            Open to collaborations, interesting problems, and good conversation.
+          </p>
+        </Reveal>
+
+        <div className="contact__links">
+          {SOCIAL_LINKS.map((link, index) => (
+            <Reveal delay={0.2 + index * 0.06} key={link.label}>
+              <a
+                className={`btn${index === 0 ? " btn--accent" : ""}`}
+                href={link.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {link.label} ↗
+              </a>
+            </Reveal>
+          ))}
         </div>
-      </Reveal>
+
+        <div className="rule" style={{ marginTop: "clamp(60px, 10vh, 120px)" }} />
+        <div className="foot">
+          <span>&copy; 2026 - Tyler Dial</span>
+          <span>Built for the scroll - Neue Montreal</span>
+        </div>
+      </div>
     </section>
   );
 }

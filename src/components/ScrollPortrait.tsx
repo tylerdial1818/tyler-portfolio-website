@@ -16,10 +16,12 @@ export default function ScrollPortrait() {
       const vh = window.innerHeight;
       const vw = window.innerWidth;
       const scrollY = window.scrollY;
+      const root = document.documentElement;
 
-      // Hide on mobile
-      if (vw < 768) {
+      // Hide when the hero switches to a one-column layout.
+      if (vw < 880) {
         el.style.display = "none";
+        root.dataset.portraitHandoff = "true";
         ticking = false;
         return;
       }
@@ -50,19 +52,20 @@ export default function ScrollPortrait() {
       const height = startSize + (endH - startSize) * tGrow;
 
       // --- Right position: align with content grid edge ---
-      const leftPadding = Math.min(Math.max(vw * 0.07, 32), 112);
+      const leftPadding = Math.min(Math.max(vw * 0.05, 20), 80);
       const sectionInnerW = vw - 2 * leftPadding;
       const contentW = Math.min(sectionInnerW, 1600);
       const rightFromViewport =
         leftPadding + (sectionInnerW - contentW) / 2;
 
       // --- Vertical position: three phases ---
-      const rem = parseFloat(
-        getComputedStyle(document.documentElement).fontSize
-      );
       const startTop = 20; // near nav
       const centeredTop = (vh - endH) / 2; // centered in viewport
-      const contentTop = 6 * rem; // hero-content section padding-top
+      const heroPortrait = document.querySelector<HTMLElement>(".hero-portrait");
+      const measuredContentTop = heroPortrait
+        ? heroPortrait.getBoundingClientRect().top + scrollY - settleEnd
+        : Math.min(Math.max(vh * 0.16, 120), 190);
+      const contentTop = Math.min(Math.max(measuredContentTop, 120), 220);
 
       let top: number;
       if (scrollY <= growEnd) {
@@ -79,18 +82,12 @@ export default function ScrollPortrait() {
       // --- Border radius: circle → rounded rect ---
       const borderRadius = 24 * (1 - tGrow) + 12 * tGrow;
 
-      // --- Opacity: fade-in at start, fade-out as hero content scrolls past ---
+      // --- Opacity: fade in at start, then hand off to the in-flow hero portrait. ---
       const fadeIn = Math.min(growRaw * 5, 1);
-      const hideStart = settleEnd + 200;
-      const hideEnd = settleEnd + 500;
-      const hideProgress = Math.min(
-        Math.max((scrollY - hideStart) / (hideEnd - hideStart), 0),
-        1
-      );
-      const opacity = fadeIn * (1 - hideProgress);
+      const opacity = scrollY >= settleEnd ? 0 : fadeIn;
 
-      // Lower z-index after animation so page sections scroll over it
-      el.style.zIndex = scrollY > settleEnd ? "10" : "99";
+      root.dataset.portraitHandoff = scrollY >= settleEnd ? "true" : "false";
+      el.style.zIndex = "99";
       el.style.display = opacity <= 0 ? "none" : "block";
 
       el.style.width = `${width}px`;

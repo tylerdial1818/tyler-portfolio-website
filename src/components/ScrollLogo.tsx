@@ -40,13 +40,12 @@ export default function ScrollLogo() {
       const navTop = 20.8; // ~1.3rem
       el.style.top = `${heroTop + (navTop - heroTop) * t}px`;
 
-      // Horizontal: centered → left-aligned with page padding
-      const leftPadding = Math.min(Math.max(vw * 0.07, 32), 112);
+      // Horizontal: centered -> left-aligned with handoff page padding
+      const leftPadding = Math.min(Math.max(vw * 0.05, 20), 80);
       const centerX = (vw - elWidth) / 2;
       el.style.left = `${centerX + (leftPadding - centerX) * t}px`;
 
-      // Letter spacing eases from hero to nav
-      el.style.letterSpacing = `${-0.05 + 0.03 * t}em`;
+      el.style.letterSpacing = "0";
 
       ticking = false;
     };
@@ -73,18 +72,20 @@ export default function ScrollLogo() {
   return (
     <div
       ref={ref}
-      className="font-display font-bold"
+      className="font-display"
       style={{
         position: "fixed",
         zIndex: 101,
         lineHeight: 0.95,
-        color: "var(--ink)",
+        color: "#fff",
+        fontWeight: 500,
+        mixBlendMode: "difference",
         willChange: "font-size, top, left",
         pointerEvents: "none",
         whiteSpace: "nowrap",
       }}
     >
-      Tyler Dial<span style={{ color: "var(--accent)" }}>.</span>
+      Tyler Dial.
     </div>
   );
 }
