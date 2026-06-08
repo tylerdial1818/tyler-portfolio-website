@@ -15,7 +15,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       rel="noopener noreferrer"
       target="_blank"
     >
-      <div className="pcard__media">
+      <div className="pcard__media" style={{ background: project.gradient }}>
         {project.image && (
           <Image
             src={project.image}

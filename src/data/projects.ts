@@ -9,6 +9,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Labor Pulse",
+    tags: ["Labor Economics", "Policy Analytics", "Research Tool"],
+    desc: "Public US labor market monitor for labor economists, journalists, and policy analysts tracking labor signals for research and briefings.",
+    gradient: "linear-gradient(135deg, #101010 0%, #1f3bff 48%, #050816 100%)",
+    link: "https://labor-pulse.vercel.app/",
+  },
+  {
     title: "ML Illustrated",
     tags: ["Full-Stack", "ML Engineering", "AI Architectures"],
     desc: "Interactive tool for building intuition about how ML models work under the hood.",

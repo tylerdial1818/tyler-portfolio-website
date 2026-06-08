@@ -643,11 +643,27 @@ html[data-portrait-handoff="false"] .hero-portrait {
   background: rgba(255, 255, 255, 0.16);
 }
 
+.contact__grid {
+  align-items: end;
+  display: grid;
+  gap: clamp(36px, 7vw, 110px);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.46fr);
+  margin-top: clamp(24px, 4vh, 54px);
+}
+
 .contact__links {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: clamp(30px, 5vh, 60px);
+}
+
+.contact__portrait {
+  aspect-ratio: 3 / 4;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .foot {
@@ -667,8 +683,13 @@ html[data-portrait-handoff="false"] .hero-portrait {
 @media (max-width: 880px) {
   .hero-grid,
   .about__grid,
-  .books__grid {
+  .books__grid,
+  .contact__grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact__portrait {
+    aspect-ratio: 16 / 10;
   }
 
   .hscroll {
