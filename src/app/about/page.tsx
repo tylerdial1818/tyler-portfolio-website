@@ -149,10 +149,10 @@ export default function AboutPage() {
             <span className="eyebrow">Beyond work</span>
             <Prose>
               <p>
-                I live in Chicago. I read widely: fiction, nonfiction,
-                philosophy, economics, and sociology. I am interested in how
-                systems shape outcomes, and how data can reveal patterns that
-                help reduce suffering.
+                I live in Chicago, and I read widely across fiction,
+                nonfiction, philosophy, economics, and sociology. I am
+                interested in how systems shape outcomes, and how data can
+                reveal patterns that help reduce suffering.
               </p>
             </Prose>
           </div>

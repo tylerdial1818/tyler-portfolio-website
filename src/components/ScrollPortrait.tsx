@@ -44,21 +44,21 @@ export default function ScrollPortrait() {
       );
       const tSettle = ease(settleRaw);
 
-      // --- Size: small circle → full size ---
+      // Size changes from small circle to full size.
       const startSize = 48;
       const endW = 390;
       const endH = 546;
       const width = startSize + (endW - startSize) * tGrow;
       const height = startSize + (endH - startSize) * tGrow;
 
-      // --- Right position: align with content grid edge ---
+      // Right position aligns with the content grid edge.
       const leftPadding = Math.min(Math.max(vw * 0.05, 20), 80);
       const sectionInnerW = vw - 2 * leftPadding;
       const contentW = Math.min(sectionInnerW, 1600);
       const rightFromViewport =
         leftPadding + (sectionInnerW - contentW) / 2;
 
-      // --- Vertical position: three phases ---
+      // Vertical position moves through three phases.
       const startTop = 20; // near nav
       const centeredTop = (vh - endH) / 2; // centered in viewport
       const heroPortrait = document.querySelector<HTMLElement>(".hero-portrait");
@@ -69,20 +69,20 @@ export default function ScrollPortrait() {
 
       let top: number;
       if (scrollY <= growEnd) {
-        // Phase 1 — grow: corner → centered
+        // Phase 1 grows from the corner to center.
         top = startTop + (centeredTop - startTop) * tGrow;
       } else if (scrollY <= settleEnd) {
-        // Phase 2 — settle: centered → content-aligned
+        // Phase 2 settles from center to content alignment.
         top = centeredTop + (contentTop - centeredTop) * tSettle;
       } else {
-        // Phase 3 — stay fixed at content position
+        // Phase 3 stays fixed at the content position.
         top = contentTop;
       }
 
-      // --- Border radius: circle → rounded rect ---
+      // Border radius changes from circle to rounded rectangle.
       const borderRadius = 24 * (1 - tGrow) + 12 * tGrow;
 
-      // --- Opacity: fade in at start, then hand off to the in-flow hero portrait. ---
+      // Opacity fades in at start, then hands off to the in-flow hero portrait.
       const fadeIn = Math.min(growRaw * 5, 1);
       const opacity = scrollY >= settleEnd ? 0 : fadeIn;
 

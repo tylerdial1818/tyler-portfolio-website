@@ -43,14 +43,24 @@ const booksByYear: Record<YearTab, Book[]> = {
   "2021": books2021,
 };
 
+function formatDisplayTitle(title: string) {
+  return title
+    .replace(/\u2014/g, " ")
+    .replace(/[:;]/g, ",")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function ReadingCard({ book }: { book: (typeof reading)[number] }) {
+  const title = formatDisplayTitle(book.title);
+
   return (
     <article className="bookcard">
       <div className="bookcard__cover">
-        <span>{book.title}</span>
+        <span>{title}</span>
         <small>{book.author}</small>
       </div>
-      <h3 className="bookcard__title">{book.title}</h3>
+      <h3 className="bookcard__title">{title}</h3>
       <div className="bookcard__author">{book.author}</div>
       <div className="bookcard__meta">
         <span className="prog">
@@ -63,6 +73,8 @@ function ReadingCard({ book }: { book: (typeof reading)[number] }) {
 }
 
 function ReadCard({ book }: { book: Book }) {
+  const title = formatDisplayTitle(book.title);
+
   return (
     <article className="bookcard">
       <div
@@ -75,12 +87,12 @@ function ReadCard({ book }: { book: Book }) {
       >
         {!book.coverUrl && (
           <>
-            <span>{book.title}</span>
+            <span>{title}</span>
             <small>{book.author}</small>
           </>
         )}
       </div>
-      <h3 className="bookcard__title">{book.title}</h3>
+      <h3 className="bookcard__title">{title}</h3>
       <div className="bookcard__author">{book.author}</div>
       <div className="bookcard__meta">
         {book.rating !== null ? `${book.rating.toFixed(1)} ★` : "Read"}
@@ -94,7 +106,9 @@ function ReadCard({ book }: { book: Book }) {
 export default function BooksPage() {
   const [activeYear, setActiveYear] = useState<YearTab>("2026");
   const selectedBooks = booksByYear[activeYear];
-  const marqueeTitles = [...books2026, ...books2026].map((book) => book.title);
+  const marqueeTitles = [...books2026, ...books2026].map((book) =>
+    formatDisplayTitle(book.title)
+  );
 
   return (
     <div style={{ background: "var(--bg)", color: "var(--fg)", minHeight: "100vh" }}>
