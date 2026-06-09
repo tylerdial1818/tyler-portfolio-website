@@ -11,19 +11,29 @@ const experience = [
 ];
 
 const skills = [
+  "AI Engineering",
+  "LLM Applications",
+  "AI Agent Systems",
+  "RAG Engineering",
+  "Vector Databases",
+  "Model Evaluation",
+  "MLOps",
   "Data Science",
   "Causal ML",
   "Deep Learning",
   "Natural Language Processing",
-  "MLOps",
-  "AI Engineering",
+  "Python",
+  "JavaScript / CSS",
+  "Go",
+  "Java",
+  "Docker",
+  "Kubernetes",
+  "Cloud Infrastructure",
+  "Context Engineering",
   "Decision Analytics",
   "Optimization Systems",
   "Custom Data Systems",
   "Dynamic Pricing Models",
-  "AI Agent Systems",
-  "Context Engineering",
-  "RAG Engineering",
 ];
 
 function Row({

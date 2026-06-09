@@ -31,10 +31,12 @@ const principles = [
 ];
 
 const stack = [
-  ["Core", "Python"],
-  ["Spatial", "GeoPandas · PostGIS"],
-  ["ML", "TensorFlow · scikit-learn"],
-  ["AI Agents", "LangChain · LangGraph"],
+  ["Languages", "Python · SQL · JavaScript / CSS · TypeScript · Go · Java"],
+  ["AI / ML", "PyTorch · TensorFlow · scikit-learn · XGBoost"],
+  ["LLM Systems", "LangChain · LangGraph · OpenAI API · RAG · evaluation"],
+  ["Data", "Postgres · DuckDB · Spark · dbt · Airflow · vector databases"],
+  ["Infra", "Docker · Kubernetes · AWS · Azure · GCP · CI/CD"],
+  ["Product", "React · Next.js · FastAPI · Tailwind CSS · D3 · Plotly"],
 ];
 
 function Prose({ children }: { children: React.ReactNode }) {
