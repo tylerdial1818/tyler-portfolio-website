@@ -60,12 +60,12 @@ export default function ConnectPage() {
             useful.
           </h1>
           <p className="lead">
-            Open to collaborations, interesting problems, and good conversation:
-            a project for Dialed Intelligence, a research idea, or just a good
-            thread to pull on.
+            Open to collaborations and referrals. I&apos;d love to hear about ideas
+            for Dialed Intelligence, social impact projects, research
+            opportunities, or anything social science related.
           </p>
           <span className="connect-loc">
-            Based in Salt Lake City - working with teams everywhere.
+            Based in Chicago, but working with teams everywhere.
           </span>
         </header>
 

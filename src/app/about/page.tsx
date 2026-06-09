@@ -110,9 +110,9 @@ export default function AboutPage() {
                 research at the National Bureau of Economic Research.
               </p>
               <p>
-                I am currently completing my Master&apos;s in Data Science at
-                Northwestern University, graduating June 2026, with coursework
-                in deep learning, natural language processing, and AI agents.
+                I completed my Master&apos;s in Data Science at Northwestern
+                University, with coursework in deep learning, natural language
+                processing, and AI agents.
               </p>
             </Prose>
           </div>
@@ -149,7 +149,7 @@ export default function AboutPage() {
             <span className="eyebrow">Beyond work</span>
             <Prose>
               <p>
-                I live in Salt Lake City. I read widely: fiction, nonfiction,
+                I live in Chicago. I read widely: fiction, nonfiction,
                 philosophy, economics, and sociology. I am interested in how
                 systems shape outcomes, and how data can reveal patterns that
                 help reduce suffering.
