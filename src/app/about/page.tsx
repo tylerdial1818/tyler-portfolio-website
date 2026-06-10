@@ -24,10 +24,10 @@ const services = [
 ];
 
 const principles = [
-  "I prefer boring, reliable technology.",
-  "I optimize for learning and ROI first.",
-  "I ship small and validate early.",
-  "AI works best when it helps people make better decisions, not when it makes decisions for them.",
+  "I solve problems with software.",
+  "I optimize for ROI and minimal user friction.",
+  "I turn data systems into value machines.",
+  "Data Scientists help you understand a problem, engineers build tools to solve it, and I do both.",
 ];
 
 const stack = [
@@ -107,14 +107,18 @@ export default function AboutPage() {
             <Prose>
               <p>
                 Before starting Dialed Intelligence, I worked as an Investment
-                Banking Analyst in municipal finance, led data analytics at HP
-                Tech Ventures, and contributed to convolutional neural network
-                research at the National Bureau of Economic Research.
+                Banking Analyst in municipal finance, a data analytics intern
+                at HP Tech Ventures, and contributed to computer vision
+                research at the NBER.
               </p>
               <p>
                 I completed my Master&apos;s in Data Science at Northwestern
-                University, with coursework in deep learning, natural language
-                processing, and AI agents.
+                University, with an emphasis in Artificial Intelligence. My
+                main coursework was focused on deep learning, data engineering,
+                natural language processing, and AI agents. Now I&apos;m an AI
+                Engineer &amp; Senior Consultant at Messina Group Consulting
+                leading data transformation projects for top Private Equity
+                firms.
               </p>
             </Prose>
           </div>

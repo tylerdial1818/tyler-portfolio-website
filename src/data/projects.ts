@@ -13,6 +13,7 @@ export const projects: Project[] = [
     tags: ["Labor Economics", "Policy Analytics", "Research Tool"],
     desc: "Public US labor market monitor for labor economists, journalists, and policy analysts tracking labor signals for research and briefings.",
     gradient: "linear-gradient(135deg, #101010 0%, #1f3bff 48%, #050816 100%)",
+    image: "/images/project-labor-pulse-preview.png",
     link: "https://labor-pulse.vercel.app/",
   },
   {
