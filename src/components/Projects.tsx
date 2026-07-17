@@ -22,7 +22,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             alt={`${project.title} screenshot`}
             fill
             sizes="(max-width: 880px) 100vw, 46vw"
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: project.imageFit ?? "cover" }}
           />
         )}
       </div>

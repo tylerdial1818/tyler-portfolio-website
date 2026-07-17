@@ -39,6 +39,7 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             sizes="100vw"
             className="pblock__image"
             priority={index === 0}
+            style={{ objectFit: project.imageFit ?? "cover" }}
           />
         )}
         <span className="pblock__view">View Project -&gt;</span>

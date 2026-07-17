@@ -4,6 +4,7 @@ export interface Project {
   desc: string;
   gradient: string;
   image?: string;
+  imageFit?: "cover" | "contain";
   link?: string;
 }
 
@@ -12,9 +13,10 @@ export const projects: Project[] = [
     title: "Labor Pulse",
     tags: ["Labor Economics", "Policy Analytics", "Research Tool"],
     desc: "Public US labor market monitor for labor economists, journalists, and policy analysts tracking labor signals for research and briefings.",
-    gradient: "linear-gradient(135deg, #101010 0%, #1f3bff 48%, #050816 100%)",
+    gradient: "linear-gradient(135deg, #f5f2e9 0%, #ede8dc 100%)",
     image: "/images/project-labor-pulse-preview.png",
-    link: "https://labor-pulse.vercel.app/",
+    imageFit: "contain",
+    link: "https://www.laborpulse.org/",
   },
   {
     title: "ML Illustrated",
